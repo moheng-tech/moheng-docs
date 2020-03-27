@@ -3,16 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-欢迎来到墨珩科技文档中心
+墨珩Super-Bound平台
 =======================================
 
 .. toctree::
    :maxdepth: 2
    :caption: 目录:
-
-   supersolid/index
-   superbound/index
-
 
 
 

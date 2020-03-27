@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'moheng-docs'
-copyright = u'2020, moheng tech'
+copyright = u'2020, 墨珩科技'
 author = u'moheng tech'
 
 # The short X.Y version
@@ -74,7 +74,8 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+html_theme = 'sphinxdoc'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -128,7 +129,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'moheng-docs.tex', u'moheng-docs Documentation',
+    (master_doc, 'moheng-docs.tex', u'moheng-docs Documentation1',
      u'moheng tech', 'manual'),
 ]
 
@@ -138,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'moheng-docs', u'moheng-docs Documentation',
+    (master_doc, 'moheng-docs', u'moheng-docs Documentation2',
      [author], 1)
 ]
 
@@ -149,7 +150,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'moheng-docs', u'moheng-docs Documentation',
+    (master_doc, 'moheng-docs', u'moheng-docs Documentation3',
      author, 'moheng-docs', 'One line description of project.',
      'Miscellaneous'),
 ]
