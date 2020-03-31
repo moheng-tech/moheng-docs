@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-联盟链接口
+联盟链中间件平台
 =======================================
 
 .. toctree::

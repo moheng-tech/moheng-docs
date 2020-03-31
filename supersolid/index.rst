@@ -14,6 +14,8 @@
    Supersolid/index
    Interface/index
    Monitor
+   Explorer
+   Definitions
 
 .. |br| raw:: html
 

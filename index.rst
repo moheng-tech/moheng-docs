@@ -6,6 +6,11 @@
 欢迎来到墨珩科技文档中心
 =======================================
 
+.. image:: ./imgs/moheng.png
+  :align: center
+
+
+
 .. toctree::
    :maxdepth: 2
    :caption: 目录:
