@@ -20,7 +20,8 @@
 
 **1.2** 启动SSB
 ::
-    super-solid-base --verbosity=4, --rpc, --networkid=1510, "--datadir=./path/to/chaindata", "--rpcaddr=0.0.0.0", "--rpcport=8545", "--rpcapi=chain3,mc,net,db"
+    super-solid-base --verbosity=4, --rpc, --networkid=1510, --datadir=./path/to/chaindata, 
+    --rpcaddr=0.0.0.0, --rpcport=8545, --rpcapi=chain3,mc,net,db
 
 
 可修改的参数说明如下
@@ -122,7 +123,7 @@
 
 **3.2** 将安装包中的 super-solid-node 和 userconfig.json 放在同一目录下，在服务器终端输入
 ::
-    super-solid-node --rpc --rpcaddr 0.0.0.0 --rpcport 8546 --p2pport 30666
+    super-solid-node --rpc --rpcaddr 0.0.0.0 --rpcport 8546 --p2pport 30383
 
 **rpcaddr**：SSN rpc地址
 
@@ -138,7 +139,7 @@
 
 my-static-node.json文件示例如下
 ::
-    ["enode://00137f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999081e08ad@[ip]:30666"]
+    ["enode://00137f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999081e08ad@[ip]:30383"]
 
 **请注意：** 如果联盟链建立在内网中，可以将ip改成内网ip；如果是外网环境，须将ip改成外网ip。
 
@@ -156,11 +157,11 @@ my-static-node.json文件示例如下
 
 总的static-nodes.json文件示例如下
 ::
-    ["enode://00137f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999081e08ad@[ip]:30666",
-    "enode://00237f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999082e08ad@[ip]:30666",
-    "enode://00337f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999083e08ad@[ip]:30666",
-    "enode://00437f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999084e08ad@[ip]:30666",
-    "enode://00537f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999085e08ad@[ip]:30666"]
+    ["enode://00137f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999081e08ad@[ip]:30383",
+    "enode://00237f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999082e08ad@[ip]:30383",
+    "enode://00337f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999083e08ad@[ip]:30383",
+    "enode://00437f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999084e08ad@[ip]:30383",
+    "enode://00537f199db5239989d3f2e2c1a2......a96c81a81321c5465682fc240e49a5a4d9999085e08ad@[ip]:30383"]
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -194,7 +195,7 @@ SSN节点添加gas
 
 **5.1** 再次一次启动所有SSN节点
 ::
-    super-solid-node --rpc --rpcaddr 0.0.0.0 --rpcport 8546 --p2pport 30666
+    super-solid-node --rpc --rpcaddr 0.0.0.0 --rpcport 8546 --p2pport 30383
 
 此时SSN不会退出，将会进入正常的启动流程。
 
@@ -227,16 +228,21 @@ SSN节点添加gas
 ::
     >loadScript("your/path/to/dappbase.js")
 
-如何判断成功。。。
+执行完后，会返回：tx hash: 0x......。
 
+等待一段时间，然后SSN命令行输入
+::
+    >mh.getReceiptByHash('0x......')
 
-
-至此联盟链部署成功！！
+如果返回null则继续等待，有结果返回，并且有contractAddress，failed = false，则表示dappbase部署成功。
 
 |br|
+
+**！！至此联盟链全部部署完成！！**
+
 |br|
 
-此时可继续部署  :doc:`联盟链浏览器 <../Explorer>` 和 :doc:`联盟链监控 <../Monitor>`。
+接下来可继续部署  :doc:`联盟链浏览器 <../Explorer>` 和 :doc:`联盟链监控 <../Monitor>`。
 
 |br|
 |br|
