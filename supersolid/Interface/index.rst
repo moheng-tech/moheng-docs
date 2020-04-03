@@ -6,6 +6,9 @@
 联盟链中间件平台
 =======================================
 
+.. image:: ../../imgs/Super-link.png
+  :align: center
+
 .. toctree::
    :maxdepth: 2
    :caption: 目录:

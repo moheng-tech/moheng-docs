@@ -6,6 +6,11 @@
 墨珩联盟链
 =======================================
 
+.. image:: ../../imgs/Super-solid.png
+  :align: center
+
+
+
 .. toctree::
    :maxdepth: 2
    :caption: 目录:
