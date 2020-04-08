@@ -8,6 +8,7 @@
 
 .. image:: ./imgs/moheng.png
   :align: center
+  :scale: 50 %
 
 
 

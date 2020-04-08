@@ -106,7 +106,8 @@
     "LogPath": "./_logs",                                                      
     "VssBaseAddr": "0x...",    
     "ChainId": 1510,                                //无需修改
-    "LogLevel": 4                                                       
+    "LogLevel": 4,
+    "SuperSolidName": "myssname"                                                       
     }
 
 **RpcServiceCfg**：SSB rpc接口地址，要与1.2启动SSB相一致
@@ -118,6 +119,9 @@
 **VssBaseAddr**：vss_base合约地址
 
 **LogLevel**：节点日志级别（debug:4, info:3）
+
+**SuperSolidName**：联盟链名称，长度不得超过32个字节，**请注意**，所有SSN节点的SuperSolidName必须一致！
+
 
 |br|
 
@@ -211,35 +215,45 @@ SSN节点添加gas
 
 当输出值大于1以后，表示联盟链启动成功！！
 
----------------------------------------------------------------------------------------------------------
-
-部署SSN合约dapp_base
->>>>>>>>>>>>>>>>>>>>>>>>>>
-
-**6.1** 将安装包中dappbse.js放到SSN服务器上，打开js文件
-::
-    var dappname = "mydappname";      
-
-**dappname**：联盟链名称
-
-|br|
-
-**6.2** SSN命令行输入
-::
-    >loadScript("your/path/to/dappbase.js")
-
-执行完后，会返回：tx hash: 0x......。
-
-等待一段时间，然后SSN命令行输入
-::
-    >mh.getReceiptByHash('0x......')
-
-如果返回null则继续等待，有结果返回，并且有contractAddress，failed = false，则表示dappbase部署成功。
-
-|br|
-
 **！！至此联盟链全部部署完成！！**
 
+此时，owner地址中将会有totalsupply的货币数额，可在SSN的命令行输入如下命令查询
+::
+    > mh.getBalance(youroweneraddr)
+
+..
+    ---------------------------------------------------------------------------------------------------------
+
+    部署SSN合约dapp_base
+    >>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    **6.1** 将安装包中dappbse.js放到SSN服务器上，打开js文件
+    ::
+        var dappname = "mydappname";      
+
+    **dappname**：联盟链名称
+
+    |br|
+
+    **6.2** SSN命令行输入
+    ::
+        >loadScript("your/path/to/dappbase.js")
+
+    执行完后，会返回：tx hash: 0x......。
+
+    等待一段时间，然后SSN命令行输入
+    ::
+        >mh.getReceiptByHash('0x......')
+
+    如果返回null则继续等待，有结果返回，并且有contractAddress，failed = false，则表示dappbase部署成功。
+
+    |br|
+
+    **！！至此联盟链全部部署完成！！**
+
+    |br|
+
+|br|
 |br|
 
 接下来可继续部署  :doc:`联盟链浏览器 <../Explorer>` 和 :doc:`联盟链监控 <../Monitor>`。
