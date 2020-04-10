@@ -24,9 +24,9 @@
 
 - console方式： 在联盟链节点服务器上直接打开命令行交互，是一种开发模式的调试方式，具体参见 :doc:`联盟链命令行介绍 <./Interface/Console>` 。
 
-- rpc方式： 通过rpc接口连接联盟链，具体参见 :doc:`联盟链命令行介绍 <./Interface/Rpc>` 。
+- rpc方式： 通过rpc接口连接联盟链，具体参见 :doc:`联盟链RPC介绍 <./Interface/Rpc>` 。
 
-- sdk方式： 安装联盟链sdk安装包，使用客户端方式交互，当前仅提供nodejs的sdk，具体参见 :doc:`联盟链命令行介绍 <./Interface/Sdk>` 。
+- sdk方式： 安装联盟链sdk安装包，使用客户端方式交互，当前仅提供nodejs的sdk，具体参见 :doc:`联盟链SDK介绍 <./Interface/Sdk>` 。
 
 通用服务指的是显示联盟链内部数据的服务工具，当前主要有：
 

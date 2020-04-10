@@ -73,26 +73,29 @@
 
 **Monitor配置**
 
-- baseAddress：ssb地址
+- baseAddress：SSB vss_base地址，具体参见  :ref:`联盟链部署2 <vssbase>` 
 
-- ssb->list->url：ssb的地址和端口号
+- ssb->list：SSB服务列表
+- ssb->list->name：SSB显示名称
+- ssb->list->host：SSB服务器rpc的IP，具体参见  :ref:`联盟链部署1.2 <ssbrpc>`
+- ssb->list->rpcPort：SSB服务器rpc端口
+- ssb->list->show：服务器监控信息是否展示（1：展示，0：不展示）
+- ssb->list->username：服务器登录用户名
+- ssb->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称）
+- ssb->list->scriptPath：SSB服务器Monitor脚本文件夹(monitor-scripts)路径
 
-- ssn->list->url：ssb的地址和端口号
+- ssn->list：ssn服务列表
+- ssn->list->name：SSN显示名称
+- ssn->list->host：SSN服务器rpc的IP，具体参见  :ref:`联盟链部署3.1 <ssnrpc>`
+- ssn->list->rpcPort：SSN服务器rpc端口
+- ssn->list->show：服务器监控信息是否展示（1：展示，0：不展示）
+- ssn->list->username：服务器登录用户名
+- ssn->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称）
+- ssn->list->scriptPath：SSN服务器Monitor脚本文件夹(monitor-scripts)路径
+- ssn->list->nodePath：节点文件夹路径
 
-- Server->对应ssb和ssn的服务器
-- Server->name：前台页面需要展示的名称
-- Server->show(1：前台页面展示，0：前台页面不展示)
-- Server->host：服务器的IP地址
-- Server->port：服务器的端口
-- Server->username：服务器的用户名
-- Server->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称）
-- Server->montiorCmd：监控服务器信息的脚本绝对路径
-- Server->restartCmd：重启ssb服务或者ssn服务的脚本绝对路径
-- Server->myNodePath：ssn服务的node绝对路径
-- Server->allNodePath：ssn服务p2p连接文件的绝对路径
-
-- Html->name：页面左菜单显示的名称
-- Html->chart_url:页面图表嵌入的网址
+- html->name：页面左菜单显示的名称
+- html->chart_url:页面图表嵌入的网址
 
 启动并查看监控
 ::::::::::::::::::::::::::
