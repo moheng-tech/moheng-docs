@@ -81,16 +81,16 @@
 - ssb->list->rpcPort：SSB服务器rpc端口
 - ssb->list->show：服务器监控信息是否展示（1：展示，0：不展示）
 - ssb->list->username：服务器登录用户名
-- ssb->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称）
+- ssb->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称），私钥文件产生方式参见 :ref:`监控相关设置 <monitor>`
 - ssb->list->scriptPath：SSB服务器Monitor脚本文件夹(monitor-scripts)路径
 
-- ssn->list：ssn服务列表
+- ssn->list：SSN服务列表
 - ssn->list->name：SSN显示名称
 - ssn->list->host：SSN服务器rpc的IP，具体参见  :ref:`联盟链部署3.1 <ssnrpc>`
 - ssn->list->rpcPort：SSN服务器rpc端口
 - ssn->list->show：服务器监控信息是否展示（1：展示，0：不展示）
 - ssn->list->username：服务器登录用户名
-- ssn->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称）
+- ssn->list->serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称），私钥文件产生方式参见 :ref:`监控相关设置 <monitor>`
 - ssn->list->scriptPath：SSN服务器Monitor脚本文件夹(monitor-scripts)路径
 - ssn->list->nodePath：节点文件夹路径
 

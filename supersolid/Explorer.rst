@@ -7,9 +7,115 @@
 什么是联盟链浏览器
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
-如何部署浏览器
+墨珩联盟链浏览器(Super-Explorer)，以下简称浏览器，是墨珩联盟链平台的一个配套服务。在一个已经部署的联盟链上，可以快速部署一套浏览器来显示联盟链的数据。
+
+浏览器有如下模块
+
+- 首页，显示联盟链基本信息、区块信息、节点信息
+- 区块信息详情页
+- 交易信息详情页
+- 账户信息详情页等
+
+服务器配置推荐
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
+推荐4核4G服务器一台，100G硬盘。
+
+推荐浏览器服务器和联盟链在同一网络环境下，可走内网。如果走外网，需要至少2M带宽。
+
+监控部署
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+**强烈建议安装在Ubuntu中**
+
+部署前需要安装的软件
+::::::::::::::::::::::::::
+
+在部署浏览器前，以下软件必须安装
+
+- node：https://npm.taobao.org/mirrors/node/v10.19.0/，推荐下载v10.19.0
+- npm：node自带
+- node express：http://expressjs.com/en/starter/installing.html
+- mongodb：https://www.mongodb.org/dl/linux
+- pm2
+
+程序包下载
+::::::::::::::::::::::::::
+
+联盟链浏览器的程序包可在如下连接中获取: |location_link| 。
+
+.. |location_link| raw:: html
+
+   <a href="https://www.baidu.com" target="_blank">浏览器程序包</a>
+
+
+依赖包安装
+::::::::::::::::::::::::::
+
+解压程序包到安装目录下，并执行
+::
+    npm install
+
+
+修改配置文件
+::::::::::::::::::::::::::
+
+修改项目中配置文件（路径：/mhExplorer/userconfig.json）
+
+* mongoHost - mongodb数据库服务器连接方式，格式为ip:port(如121.43.129.11:10010)
+* mongoUserName - mongodb数据库服务器用户名
+* mongoPwd - mongodb数据库服务器密码
+* dbname - 当前项目数据库名称
+* ssbHost - SSB服务器连接方式，格式为ip:port(如120.78.146.128:8545)，相关服务器必须打开RPC端口
+* baseAddress - vss_base地址(大小写通用，页面显示统一处理为小写)
+* ssnHosts - SSN服务器组连接方式，格式为数组（如["47.106.34.55:8546", "47.106.34.56:8546"]），相关服务器组必须打开RPC端口
+* community_item1 - 页面header community部分下拉列表一
+* community_item1_url - 下拉列表一链接
+* community_item2 - 页面header community部分下拉列表二
+* community_item2_url - 下拉列表二链接
+
+以上凡涉及host格式，请勿在开头添加http://, 保证“:”前后无空格。
+
+自定义项目Logo
+:::::::::::::::::::::::::::
+
+如需自定义项目logo，请修改您的logo图片名称为logo.png，并覆盖至/mhExplorer/public/img路径下。
+
+启动浏览器
+:::::::::::::::::::::::::::
+
+以上安装与配置都完成后，可到根目录(/mhExplorer)启动项目，如下：
+::
+    node app
+
+启动后在浏览器输入：http://localhost:3001, 方可查看项目启动情况, 默认监听端口为3001，您可在根目录下app.js文件中修改端口。
+除此之外，您还可以根据自己情况，配置pm2方式启动，或在第三方IDE中启动项目。
+
+启动数据监控脚本
+:::::::::::::::::::::::::::
+
+在程序包目录下，有个监控脚本可执行文件，运行
+::
+    ./moheng-explorer-script -rpc "" -mdb "" -mongo "" -mpwd "" -muser "" -startBlock ""
+
+启动参数说明如下
+
+========== ======= ================================
+参数名     类型    说明         
+========== ======= ================================
+mdb        string  mongo数据库名称
+mongo      string  mongodb数据库服务器连接方式
+mpwd       string  mongodb数据库服务器密码
+muser      string  mongodb数据库服务器用户名
+rpc        string  SSN服务器连接方式
+startBlock int     脚本执行开始高度
+========== ======= ================================
+
+**数据脚本日志**
+
+log.xml中读取日志配置，会创建logs目录，每天生成一个日志文件。
+
+       
 监控浏览器说明书
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
