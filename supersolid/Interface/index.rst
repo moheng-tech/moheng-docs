@@ -16,6 +16,7 @@
    Console
    Rpc
    Sdk
+   Api
 
 
 .. |br| raw:: html
