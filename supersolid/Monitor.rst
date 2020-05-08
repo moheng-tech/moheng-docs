@@ -111,24 +111,99 @@
 监控的信息介绍
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
+账户信息
+::::::::::::::::::
+
+- 余额显示
+- 账户keystore
+- 退出
+
+.. image:: ../imgs/monitor-1.png
+  :align: center
+  
+其他信息
+::::::::::::::::::
+
+- SSB相关信息展示
+- SSN相关信息展示
+- Monitor相关信息展示
+- 日志展示
+
+.. image:: ../imgs/monitor-2.png
+  :align: center
+  
+.. image:: ../imgs/monitor-3.png
+  :align: center
+  
+.. image:: ../imgs/monitor-4.png
+  :align: center
+  
 监控的使用介绍
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
+转账
+::::::::::::::::::
+
+- 账户之间的Token互转
+
+.. image:: ../imgs/monitor-5.png
+  :align: center
+
 续块
 ::::::::::::::::::
+
+- 联盟链运行需要进行续块操作，当联盟链达到下次续块高度后就会停止，需要在此处进行续块操作。
+
+.. image:: ../imgs/monitor-6.png
+  :align: center
 
 节点添加
 ::::::::::::::::::
 
 **联盟链拥有者**
 
+- 节点添加操作
+
+.. image:: ../imgs/monitor-7.png
+  :align: center
+ 
+- 查看已投票节点账户列表
+ 
+.. image:: ../imgs/monitor-8.png
+  :align: center
+
 **老节点方**
+
+- 查看节点申请列表
+
+.. image:: ../imgs/monitor-9.png
+  :align: center
+  
+- 投票操作
+
+.. image:: ../imgs/monitor-10.png
+  :align: center
 
 **新节点方**
 
-转账
+- 查看当前申请节点的投票状态
+
+.. image:: ../imgs/monitor-11.png
+  :align: center
+  
+配置文件
 ::::::::::::::::::
+
+- 更新当前节点配置文件
+
+.. image:: ../imgs/monitor-12.png
+  :align: center
 
 重启节点
 ::::::::::::::::::
+
+- 联盟链拥有者可以重启所有节点程序，节点账户可重启当前自己的节点程序。
+
+.. image:: ../imgs/monitor-13.png
+  :align: center
 
