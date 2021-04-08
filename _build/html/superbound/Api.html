@@ -1,0 +1,906 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Super-Bound API 接口说明 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Super-Bound平台部署" href="Deploy.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Deploy.html" title="Super-Bound平台部署"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">墨珩超零界系统</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Super-Bound API 接口说明</a><ul>
+<li><a class="reference internal" href="#id1">存证模块</a><ul>
+<li><a class="reference internal" href="#changeowener">锁定标签(changeOwener)</a></li>
+<li><a class="reference internal" href="#updateinfo">标签存证(updateInfo)</a></li>
+<li><a class="reference internal" href="#open">标签解锁(open)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">溯源校验模块</a><ul>
+<li><a class="reference internal" href="#gettraceinfo">查询溯源信息(getTraceInfo)</a></li>
+<li><a class="reference internal" href="#publickeycheck">公钥校验(publicKeyCheck)</a></li>
+<li><a class="reference internal" href="#tracecheck">溯源校验(traceCheck)</a></li>
+<li><a class="reference internal" href="#traceappeal">溯源申诉(traceAppeal)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="Deploy.html"
+                        title="上一章">Super-Bound平台部署</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/superbound/Api.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="super-bound-api">
+<h1>Super-Bound API 接口说明<a class="headerlink" href="#super-bound-api" title="永久链接至标题">¶</a></h1>
+<p>在Super-Bound部署并初始化标签完毕后，即可使用API服务对标签进行存证溯源操作。</p>
+<p>以下是可以使用的API汇总。</p>
+<div class="section" id="id1">
+<h2>存证模块<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="changeowener">
+<h3>锁定标签(changeOwener)<a class="headerlink" href="#changeowener" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>将一个在初始化状态或解锁的标签锁定。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/changeOwner</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="7%" />
+<col width="11%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+<tr class="row-odd"><td>labelPublicKey</td>
+<td>是</td>
+<td>string</td>
+<td>标签公钥</td>
+</tr>
+<tr class="row-even"><td>ownerPublicKey</td>
+<td>是</td>
+<td>string</td>
+<td>工厂(扫码枪)公钥</td>
+</tr>
+<tr class="row-odd"><td>signInfo</td>
+<td>是</td>
+<td>string</td>
+<td>加密信息(标签私钥加签工厂公钥)</td>
+</tr>
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>工厂(扫码枪)地址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码：</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码：</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+<li>606：入场时候信息不合法，db中标签key的公钥和所传公钥不一致</li>
+<li>607：扫码操作，参数验签失败</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="updateinfo">
+<h3>标签存证(updateInfo)<a class="headerlink" href="#updateinfo" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>将溯源信息存入锁定的标签中</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/updateInfo</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+<tr class="row-odd"><td>info</td>
+<td>是</td>
+<td>string</td>
+<td>流转信息</td>
+</tr>
+<tr class="row-even"><td>signInfo</td>
+<td>是</td>
+<td>string</td>
+<td>加密信息(工厂私钥加签扫码信息)</td>
+</tr>
+<tr class="row-odd"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码：</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+<li>606：入场时候信息不合法，db中标签key的公钥和所传公钥不一致</li>
+<li>607：扫码操作，参数验签失败</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="open">
+<h3>标签解锁(open)<a class="headerlink" href="#open" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>出场</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/open</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+<tr class="row-odd"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户</td>
+</tr>
+<tr class="row-even"><td>signInfo</td>
+<td>是</td>
+<td>string</td>
+<td>加密信息(工厂私钥加签扫码信息)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码：</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码：</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+<li>606：入场时候信息不合法，db中标签key的公钥和所传公钥不一致</li>
+<li>607：扫码操作，参数验签失败</li>
+</ul>
+<p><br/></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>溯源校验模块<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="gettraceinfo">
+<h3>查询溯源信息(getTraceInfo)<a class="headerlink" href="#gettraceinfo" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>查询标签溯源信息</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getTraceInfo</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="20%" />
+<col width="30%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x289f7eb882f......829921b92b26aa0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;traceInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;add trace info&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;traceValue&quot;</span><span class="p">:</span> <span class="s2">&quot;5open&amp;MFwwDQYJKoZIhvcNA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;traceArr&quot;</span><span class="p">:</span>      <span class="p">[</span><span class="s2">&quot;MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALuJxUO+8LPrWf7vAt83c5euY&quot;</span><span class="p">,</span> <span class="s2">&quot;006888b10d274c8aa1c286b30257ea05a73851cf8cb24a1ebb&quot;</span><span class="p">,</span> <span class="s2">&quot;add trace info&quot;</span><span class="p">,</span> <span class="s2">&quot;8b255422022b369374ea05f74ea352f0d7ff8f7f17f&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息(json)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="20%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>owner</td>
+<td>string</td>
+<td>标签所属人</td>
+</tr>
+<tr class="row-odd"><td>traceInfo</td>
+<td>string</td>
+<td>溯源明文</td>
+</tr>
+<tr class="row-even"><td>traceValue</td>
+<td>string</td>
+<td>溯源信息db原文</td>
+</tr>
+<tr class="row-odd"><td>traceArr</td>
+<td>array</td>
+<td>溯源信息数组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码：</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码：</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="publickeycheck">
+<h3>公钥校验(publicKeyCheck)<a class="headerlink" href="#publickeycheck" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>公钥校验，开发模式</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/publicKeyCheck</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="11%" />
+<col width="17%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ownerPublicKey</td>
+<td>是</td>
+<td>string</td>
+<td>用户扫码公钥</td>
+</tr>
+<tr class="row-odd"><td>checkInfo</td>
+<td>是</td>
+<td>string</td>
+<td>明文</td>
+</tr>
+<tr class="row-even"><td>signature</td>
+<td>是</td>
+<td>string</td>
+<td>密文</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="n">null</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>boolean</td>
+<td>查询信息(true-成功，false-失败)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码：</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码：</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="tracecheck">
+<h3>溯源校验(traceCheck)<a class="headerlink" href="#tracecheck" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>溯源校验，校验溯源信息是否正确</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/traceCheck</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="14%" />
+<col width="21%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>是</td>
+<td>string</td>
+<td>proof证明路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x888b10d274c8aa1c286b30257ea05a7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xcab08ce37f4530ed81960a761ddfc3a0a2c2a4a5d3d251fec1c1286843ea50ba&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息(json)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="15%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>number</td>
+<td>校验结果（1-成功 0-失败）</td>
+</tr>
+<tr class="row-odd"><td>rootHash</td>
+<td>string</td>
+<td>merkle树根hash</td>
+</tr>
+<tr class="row-even"><td>txHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码：</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="traceappeal">
+<h3>溯源申诉(traceAppeal)<a class="headerlink" href="#traceappeal" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>溯源申诉，溯源信息不正确，进行申诉修正</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/traceAppeal</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="14%" />
+<col width="21%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>编号</td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>是</td>
+<td>string</td>
+<td>proof证明路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息(json)</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="12%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>number</td>
+<td>校验结果（1-申诉成功 0-申诉失败）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：用户服务异常</li>
+<li>502：rpc调用异常</li>
+<li>503：update db异常</li>
+<li>504：find db异常</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>601：key不合法</li>
+<li>602：状态不合法，不能执行入场，或者不能场内流转</li>
+<li>603：当前用户无操作权限</li>
+<li>604：录入重复信息</li>
+<li>605：信息上链确认中</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Deploy.html" title="Super-Bound平台部署"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >墨珩超零界系统</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

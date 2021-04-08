@@ -1,0 +1,309 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>联盟链监控 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="联盟链浏览器" href="Explorer.html" />
+    <link rel="prev" title="Restful API 简介" href="Interface/Api.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Explorer.html" title="联盟链浏览器"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Interface/Api.html" title="Restful API 简介"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">墨珩联盟链平台（超衡）</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">联盟链监控</a><ul>
+<li><a class="reference internal" href="#id2">什么是监控</a></li>
+<li><a class="reference internal" href="#id3">服务器配置推荐</a></li>
+<li><a class="reference internal" href="#id4">监控部署</a><ul>
+<li><a class="reference internal" href="#id5">部署前需要安装的软件</a></li>
+<li><a class="reference internal" href="#id6">程序包下载</a></li>
+<li><a class="reference internal" href="#id7">依赖包安装</a></li>
+<li><a class="reference internal" href="#id8">修改配置文件</a></li>
+<li><a class="reference internal" href="#id9">启动并查看监控</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">监控的信息介绍</a><ul>
+<li><a class="reference internal" href="#id11">账户信息</a></li>
+<li><a class="reference internal" href="#id12">其他信息</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">监控的使用介绍</a><ul>
+<li><a class="reference internal" href="#id14">转账</a></li>
+<li><a class="reference internal" href="#id15">续块</a></li>
+<li><a class="reference internal" href="#id16">节点添加</a></li>
+<li><a class="reference internal" href="#id17">配置文件</a></li>
+<li><a class="reference internal" href="#id18">重启节点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="Interface/Api.html"
+                        title="上一章">Restful API 简介</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="Explorer.html"
+                        title="下一章">联盟链浏览器</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/supersolid/Monitor.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>联盟链监控<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<img alt="../_images/Super-monitor.png" class="align-center" src="../_images/Super-monitor.png" />
+<div class="section" id="id2">
+<h2>什么是监控<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>墨珩联盟链监控(Super-Monitor)，以下简称监控，是墨珩联盟链平台的一个配套服务。在一个已经部署的联盟链上，可以快速部署这样一套监控系统来监控联盟链的数据。</p>
+<p>监控系统有如下一些模块</p>
+<ul class="simple">
+<li>账户模块，监控根据不同的登陆账号给出不同的权限</li>
+<li>数据显示模块</li>
+<li>图表模块</li>
+<li>操作模块，主要收费续块和节点相关操作</li>
+<li>报警模块</li>
+<li>日志模块等</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>服务器配置推荐<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>推荐2核2G服务器一台，40G硬盘。</p>
+<p>推荐监控服务器和联盟链在同一网络环境下，可走内网。如果走外网，需要至少2M带宽。</p>
+</div>
+<div class="section" id="id4">
+<h2>监控部署<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>强烈建议安装在Ubuntu中</strong></p>
+<div class="section" id="id5">
+<h3>部署前需要安装的软件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>在部署监控前，以下软件必须安装</p>
+<ul class="simple">
+<li>node：<a class="reference external" href="https://npm.taobao.org/mirrors/node/v10.19.0/">https://npm.taobao.org/mirrors/node/v10.19.0/</a>，推荐下载v10.19.0</li>
+<li>npm：node自带</li>
+<li>mongodb：<a class="reference external" href="https://www.mongodb.org/dl/linux">https://www.mongodb.org/dl/linux</a></li>
+<li>pm2</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>程序包下载<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>联盟链监控的程序包可在如下连接中获取: <a href="https://gitee.com/moheng_blockchain/moheng-platform/releases/v1.0" target="_blank">监控程序包</a> 。</p>
+</div>
+<div class="section" id="id7">
+<h3>依赖包安装<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>解压程序包到安装目录下，并执行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>修改配置文件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p><strong>Mongodb配置</strong></p>
+<p>配置根目录下Mongodb文件config.json</p>
+<ul class="simple">
+<li>mongoHost：mongo IP地址</li>
+<li>mongouname：mongo用户名</li>
+<li>mongopasswd：mongo密码</li>
+<li>dbname：mongo库名称</li>
+</ul>
+<p><strong>Monitor配置</strong></p>
+<ul class="simple">
+<li>baseAddress：SSB vss_base地址，具体参见  <a class="reference internal" href="Supersolid/Deploy.html#vssbase"><span class="std std-ref">联盟链部署2</span></a></li>
+<li>ssb-&gt;list：SSB服务列表</li>
+<li>ssb-&gt;list-&gt;name：SSB显示名称</li>
+<li>ssb-&gt;list-&gt;host：SSB服务器rpc的IP，具体参见  <a class="reference internal" href="Supersolid/Deploy.html#ssbrpc"><span class="std std-ref">联盟链部署1.2</span></a></li>
+<li>ssb-&gt;list-&gt;rpcPort：SSB服务器rpc端口</li>
+<li>ssb-&gt;list-&gt;show：服务器监控信息是否展示（1：展示，0：不展示）</li>
+<li>ssb-&gt;list-&gt;username：服务器登录用户名</li>
+<li>ssb-&gt;list-&gt;serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称），私钥文件产生方式参见 <a class="reference internal" href="Supersolid/Deploy.html#monitor"><span class="std std-ref">监控相关设置</span></a></li>
+<li>ssb-&gt;list-&gt;scriptPath：SSB服务器Monitor脚本文件夹(monitor-scripts)路径</li>
+<li>ssn-&gt;list：SSN服务列表</li>
+<li>ssn-&gt;list-&gt;name：SSN显示名称</li>
+<li>ssn-&gt;list-&gt;host：SSN服务器rpc的IP，具体参见  <a class="reference internal" href="Supersolid/Deploy.html#ssnrpc"><span class="std std-ref">联盟链部署3.1</span></a></li>
+<li>ssn-&gt;list-&gt;rpcPort：SSN服务器rpc端口</li>
+<li>ssn-&gt;list-&gt;show：服务器监控信息是否展示（1：展示，0：不展示）</li>
+<li>ssn-&gt;list-&gt;username：服务器登录用户名</li>
+<li>ssn-&gt;list-&gt;serverPrivateKey：服务器私钥文件（在项目routes目录下，若每台服务器私钥不一样需要对应不同的名称），私钥文件产生方式参见 <a class="reference internal" href="Supersolid/Deploy.html#monitor"><span class="std std-ref">监控相关设置</span></a></li>
+<li>ssn-&gt;list-&gt;scriptPath：SSN服务器Monitor脚本文件夹(monitor-scripts)路径</li>
+<li>ssn-&gt;list-&gt;nodePath：节点文件夹路径</li>
+<li>html-&gt;name：页面左菜单显示的名称</li>
+<li>html-&gt;chart_url:页面图表嵌入的网址</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>启动并查看监控<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>输入如下命令启动监控</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm2</span> <span class="n">start</span> <span class="n">app</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>至此，可在 http:本机ip:3002 查看监控。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>监控的信息介绍<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>账户信息<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>余额显示</li>
+<li>账户keystore</li>
+<li>退出</li>
+</ul>
+<img alt="../_images/monitor-1.png" class="align-center" src="../_images/monitor-1.png" />
+</div>
+<div class="section" id="id12">
+<h3>其他信息<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>SSB相关信息展示</li>
+<li>SSN相关信息展示</li>
+<li>Monitor相关信息展示</li>
+<li>日志展示</li>
+</ul>
+<img alt="../_images/monitor-2.png" class="align-center" src="../_images/monitor-2.png" />
+<img alt="../_images/monitor-3.png" class="align-center" src="../_images/monitor-3.png" />
+<img alt="../_images/monitor-4.png" class="align-center" src="../_images/monitor-4.png" />
+<p>监控系统中账号被分成如下几类：</p>
+<ul class="simple">
+<li>联盟链管理员账号：  <a class="reference internal" href="Definitions.html#owner"><span class="std std-ref">owner</span></a> 账号，拥有最高权限，可以发起添加节点的投票。</li>
+<li>节点账号：指SSN节点的 <a class="reference internal" href="Definitions.html#ssnid"><span class="std std-ref">ssnid</span></a> 账号，当owner发起投票时，拥有一次投票权。</li>
+<li>新节点账号：指正在准备加入，在投票阶段的账号。</li>
+<li>普通账号：监控系统其他注册账号。不能进行投票模块的操作。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>监控的使用介绍<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id14">
+<h3>转账<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>账户之间的Token互转</li>
+</ul>
+<img alt="../_images/monitor-5.png" class="align-center" src="../_images/monitor-5.png" />
+</div>
+<div class="section" id="id15">
+<h3>续块<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>联盟链运行需要进行续块操作，当联盟链达到下次续块高度后就会停止，需要在此处进行续块操作。</li>
+</ul>
+<img alt="../_images/monitor-6.png" class="align-center" src="../_images/monitor-6.png" />
+</div>
+<div class="section" id="id16">
+<h3>节点添加<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p><strong>联盟链拥有者</strong></p>
+<ul class="simple">
+<li>节点添加操作</li>
+</ul>
+<img alt="../_images/monitor-7.png" class="align-center" src="../_images/monitor-7.png" />
+<ul class="simple">
+<li>查看已投票节点账户列表</li>
+</ul>
+<img alt="../_images/monitor-8.png" class="align-center" src="../_images/monitor-8.png" />
+<p><strong>老节点方</strong></p>
+<ul class="simple">
+<li>查看节点申请列表</li>
+</ul>
+<img alt="../_images/monitor-9.png" class="align-center" src="../_images/monitor-9.png" />
+<ul class="simple">
+<li>投票操作</li>
+</ul>
+<img alt="../_images/monitor-10.png" class="align-center" src="../_images/monitor-10.png" />
+<p><strong>新节点方</strong></p>
+<ul class="simple">
+<li>查看当前申请节点的投票状态</li>
+</ul>
+<img alt="../_images/monitor-11.png" class="align-center" src="../_images/monitor-11.png" />
+</div>
+<div class="section" id="id17">
+<h3>配置文件<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>更新当前节点配置文件</li>
+</ul>
+<img alt="../_images/monitor-12.png" class="align-center" src="../_images/monitor-12.png" />
+</div>
+<div class="section" id="id18">
+<h3>重启节点<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>联盟链拥有者可以重启所有节点程序，节点账户可重启当前自己的节点程序。</li>
+</ul>
+<img alt="../_images/monitor-13.png" class="align-center" src="../_images/monitor-13.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Explorer.html" title="联盟链浏览器"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Interface/Api.html" title="Restful API 简介"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >墨珩联盟链平台（超衡）</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

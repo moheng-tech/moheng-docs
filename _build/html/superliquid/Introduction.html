@@ -1,0 +1,158 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>平台介绍 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="混合支付范例" href="SLsample.html" />
+    <link rel="prev" title="墨珩混合支付系统（超易泰）" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="SLsample.html" title="混合支付范例"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="墨珩混合支付系统（超易泰）"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">墨珩混合支付系统（超易泰）</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">平台介绍</a><ul>
+<li><a class="reference internal" href="#id2">什么是墨珩混合支付系统</a></li>
+<li><a class="reference internal" href="#id3">混合支付系统业务逻辑简介</a><ul>
+<li><a class="reference internal" href="#sl20">SL20系统</a></li>
+<li><a class="reference internal" href="#sl21">SL21系统</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">章节构成简介</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="index.html"
+                        title="上一章">墨珩混合支付系统（超易泰）</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="SLsample.html"
+                        title="下一章">混合支付范例</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/superliquid/Introduction.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>平台介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/liquid_frame.png"><img alt="../_images/liquid_frame.png" class="align-center" src="../_images/liquid_frame.png" style="width: 589.0px; height: 391.5px;" /></a>
+<div class="section" id="id2">
+<h2>什么是墨珩混合支付系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>墨珩混合支付系统(Super-Liquid)，也称快速支付系统，是墨珩网络科技有限公司自主研发的联盟链支付系统，利用cTree快速存取模块，实现链上链下协同混合支付。 混合支付一共有两个不同的子系统（支付方式），分别是主打数字资产的 <a class="reference internal" href="../supersolid/Definitions.html#sl20"><span class="std std-ref">SL20系统</span></a> 和主打非标资产的 <a class="reference internal" href="../supersolid/Definitions.html#sl21"><span class="std std-ref">SL21系统</span></a> 。</p>
+<p>需要指出的是，混合支付系统需要和  <a class="reference internal" href="../supersolid/Supersolid/index.html"><span class="doc">联盟链</span></a> 配合使用，从而实现链上链下的数据交互。</p>
+<p>混合支付适用于各种数字资产和非标资产的场景，可使用接口方式，直接接入混合支付系统。同时系统预留了与外部数字资产对接的接口，可方便的进行外部资产与本系统直接的兑换。</p>
+</div>
+<div class="section" id="id3">
+<h2>混合支付系统业务逻辑简介<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="sl20">
+<h3>SL20系统<a class="headerlink" href="#sl20" title="永久链接至标题">¶</a></h3>
+<p>SL20系统是快速支付的两个子系统之一，用户资产可以分布在不同的账号里，通过充值，转账，提现等操作进行资产变化。</p>
+<p>其特点是</p>
+<ul class="simple">
+<li>用户可以有多个子账号，账号的资产调度由系统完成</li>
+<li>转账操作实时完成</li>
+<li>所有操作上链，并通过智能合约保证账户安全</li>
+<li>所有账号的资产历史是一个完整的链条，方便路径查找</li>
+</ul>
+</div>
+<div class="section" id="sl21">
+<h3>SL21系统<a class="headerlink" href="#sl21" title="永久链接至标题">¶</a></h3>
+<p>SL21系统是快速支付的的两个子系统之一，用户资产以“一”为单位拥有，不可拆分，但是可以切换拥有着。</p>
+<p>其特点是</p>
+<ul class="simple">
+<li>资产属性可定制，一份资产同一时间一个拥有者</li>
+<li>可转换拥有者，操作瞬间完成</li>
+<li>所有操作上链，并通过智能合约保证资产安全</li>
+<li>一份资产的历史记录是一个完整的链条，易于监管查询</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>章节构成简介<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>本章主要由，混合支付范例，SL20接口、SL21接口三部分组成。</p>
+<p>关于范例的具体介绍请参见 <a class="reference internal" href="SLsample.html"><span class="doc">混合支付范例</span></a> 。</p>
+<p>如果您已经部署了SL20系统，想要使用SL20的功能并进行二次开发，请参见 <a class="reference internal" href="ApiSL20.html"><span class="doc">SL20接口文档</span></a> 。</p>
+<p>如果您已经部署了SL21系统，想要使用SL21的功能并进行二次开发，请参见 <a class="reference internal" href="ApiSL21.html"><span class="doc">SL21接口文档</span></a> 。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="SLsample.html" title="混合支付范例"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="墨珩混合支付系统（超易泰）"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >墨珩混合支付系统（超易泰）</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

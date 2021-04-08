@@ -1,0 +1,1392 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>混合支付平台 – SL21 API 接口说明 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="混合支付平台 – SL20 API 接口说明" href="ApiSL20.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="ApiSL20.html" title="混合支付平台 – SL20 API 接口说明"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">墨珩混合支付系统</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">混合支付平台 – SL21 API 接口说明</a><ul>
+<li><a class="reference internal" href="#id1">1. 注册</a></li>
+<li><a class="reference internal" href="#keystore">2. keyStore登录</a></li>
+<li><a class="reference internal" href="#id2">3. 用户登录</a></li>
+<li><a class="reference internal" href="#id3">6. 流转</a></li>
+<li><a class="reference internal" href="#id4">7. 批量流转</a></li>
+<li><a class="reference internal" href="#id5">8. 流转（本地加签）</a></li>
+<li><a class="reference internal" href="#id6">9. 批量流转（本地加签）</a></li>
+<li><a class="reference internal" href="#id7">10. 校验</a></li>
+<li><a class="reference internal" href="#id8">11. 根据用户获取资产</a></li>
+<li><a class="reference internal" href="#id9">12. 根据资产唯一编号获取资产流转记录</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="ApiSL20.html"
+                        title="上一章">混合支付平台 – SL20 API 接口说明</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/superliquid/ApiSL21.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sl21-api">
+<h1>混合支付平台 – SL21 API 接口说明<a class="headerlink" href="#sl21-api" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>1. 注册<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>注册新用户</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/register</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="21%" />
+<col width="26%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>password</td>
+<td>是</td>
+<td>string</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;注册成功&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x96951816290931278e0b7a2f5a0dcea6a9c86e77&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyStore&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">version</span><span class="se">\&quot;</span><span class="s2">:3,</span><span class="se">\&quot;</span><span class="s2">id</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">4a6414df-ad68-4a8e-a1aa-c3036a09b77e</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">address</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">96951816290931278e0b7a2f5a0dcea6a9c86e77</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">crypto</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">ciphertext</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">06262cc1e3ceb7d0b3e9f0f64087be3eae33696b94075cad6b4183197a8c73e6</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">cipherparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">iv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ba261919f4ddcf1af6e1a0a9238cc240</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">cipher</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">aes-128-ctr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kdf</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">scrypt</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kdfparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">dklen</span><span class="se">\&quot;</span><span class="s2">:32,</span><span class="se">\&quot;</span><span class="s2">salt</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">dc77114da655599012fb33e34a72dec5588167e9baf9405f1cd05e0282d4cd78</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">n</span><span class="se">\&quot;</span><span class="s2">:8192,</span><span class="se">\&quot;</span><span class="s2">r</span><span class="se">\&quot;</span><span class="s2">:8,</span><span class="se">\&quot;</span><span class="s2">p</span><span class="se">\&quot;</span><span class="s2">:1},</span><span class="se">\&quot;</span><span class="s2">mac</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3f19bae52ca0bd52f281d723178c470e0e297c521cfe4f87befebe67883b3a4e</span><span class="se">\&quot;</span><span class="s2">}}&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="25%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address</td>
+<td>string</td>
+<td>用户地址</td>
+</tr>
+<tr class="row-odd"><td>keyStore</td>
+<td>string</td>
+<td>用户keyStore</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="keystore">
+<h2>2. keyStore登录<a class="headerlink" href="#keystore" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>使用keyStore登录</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/keyStoreLogin</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="17%" />
+<col width="22%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>keyStore</td>
+<td>是</td>
+<td>string</td>
+<td>用户keyStore</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>是</td>
+<td>string</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;keyStore&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">address</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">8ef73a369711f309c8183d3633b141b78cb68835</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">crypto</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">cipher</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">aes-128-ctr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ciphertext</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">5fb42f62c65b79e95165501ca722e3343e3d88accde096856527b1dee7e70f6b</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">cipherparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">iv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3a5b059b940031e1edad49892b182165</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">kdf</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">scrypt</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kdfparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">dklen</span><span class="se">\&quot;</span><span class="s2">:32,</span><span class="se">\&quot;</span><span class="s2">n</span><span class="se">\&quot;</span><span class="s2">:262144,</span><span class="se">\&quot;</span><span class="s2">p</span><span class="se">\&quot;</span><span class="s2">:1,</span><span class="se">\&quot;</span><span class="s2">r</span><span class="se">\&quot;</span><span class="s2">:8,</span><span class="se">\&quot;</span><span class="s2">salt</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">568fcfb8fa8e2c0a7f731c067c79c3ad0a8be4f1a6c74774531d81c88d27406d</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">mac</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">fa81f4d7773b2266a907abce563dc05d515afa211cd2cf3b0b3a7cc1de9ff039</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">id</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">f44560c1-8063-4d9e-b371-6845ee168f79</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">version</span><span class="se">\&quot;</span><span class="s2">:3}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;登录成功&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyStore&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">address</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">8ef73a369711f309c8183d3633b141b78cb68835</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">crypto</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">cipher</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">aes-128-ctr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ciphertext</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">5fb42f62c65b79e95165501ca722e3343e3d88accde096856527b1dee7e70f6b</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">cipherparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">iv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3a5b059b940031e1edad49892b182165</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">kdf</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">scrypt</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kdfparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">dklen</span><span class="se">\&quot;</span><span class="s2">:32,</span><span class="se">\&quot;</span><span class="s2">n</span><span class="se">\&quot;</span><span class="s2">:262144,</span><span class="se">\&quot;</span><span class="s2">p</span><span class="se">\&quot;</span><span class="s2">:1,</span><span class="se">\&quot;</span><span class="s2">r</span><span class="se">\&quot;</span><span class="s2">:8,</span><span class="se">\&quot;</span><span class="s2">salt</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">568fcfb8fa8e2c0a7f731c067c79c3ad0a8be4f1a6c74774531d81c88d27406d</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">mac</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">fa81f4d7773b2266a907abce563dc05d515afa211cd2cf3b0b3a7cc1de9ff039</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">id</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">f44560c1-8063-4d9e-b371-6845ee168f79</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">version</span><span class="se">\&quot;</span><span class="s2">:3}&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="25%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address</td>
+<td>string</td>
+<td>用户地址</td>
+</tr>
+<tr class="row-odd"><td>keyStore</td>
+<td>string</td>
+<td>用户keyStore</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>3. 用户登录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>用户登录</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/login</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="19%" />
+<col width="24%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address</td>
+<td>是</td>
+<td>string</td>
+<td>用户地址</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>是</td>
+<td>string</td>
+<td>密码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;登录成功&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyStore&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">address</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">8ef73a369711f309c8183d3633b141b78cb68835</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">crypto</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">cipher</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">aes-128-ctr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ciphertext</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">5fb42f62c65b79e95165501ca722e3343e3d88accde096856527b1dee7e70f6b</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">cipherparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">iv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3a5b059b940031e1edad49892b182165</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">kdf</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">scrypt</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">kdfparams</span><span class="se">\&quot;</span><span class="s2">:{</span><span class="se">\&quot;</span><span class="s2">dklen</span><span class="se">\&quot;</span><span class="s2">:32,</span><span class="se">\&quot;</span><span class="s2">n</span><span class="se">\&quot;</span><span class="s2">:262144,</span><span class="se">\&quot;</span><span class="s2">p</span><span class="se">\&quot;</span><span class="s2">:1,</span><span class="se">\&quot;</span><span class="s2">r</span><span class="se">\&quot;</span><span class="s2">:8,</span><span class="se">\&quot;</span><span class="s2">salt</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">568fcfb8fa8e2c0a7f731c067c79c3ad0a8be4f1a6c74774531d81c88d27406d</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">mac</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">fa81f4d7773b2266a907abce563dc05d515afa211cd2cf3b0b3a7cc1de9ff039</span><span class="se">\&quot;</span><span class="s2">},</span><span class="se">\&quot;</span><span class="s2">id</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">f44560c1-8063-4d9e-b371-6845ee168f79</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">version</span><span class="se">\&quot;</span><span class="s2">:3}&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>数据信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="25%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address</td>
+<td>string</td>
+<td>用户地址</td>
+</tr>
+<tr class="row-odd"><td>keyStore</td>
+<td>string</td>
+<td>用户keyStore</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>6. 流转<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>流转</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/changeOwner</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="14%" />
+<col width="17%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>资产唯一编号</td>
+</tr>
+<tr class="row-even"><td>fromUserAddr</td>
+<td>是</td>
+<td>string</td>
+<td>流转用户地址</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>是</td>
+<td>number</td>
+<td>流转用户密码</td>
+</tr>
+<tr class="row-even"><td>toUserAddr</td>
+<td>是</td>
+<td>number</td>
+<td>接收用户地址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;fromUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;toUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">1591338217080</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>数据信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>number</td>
+<td>交易时间戳</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>7. 批量流转<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>批量流转</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/batchChangeOwner</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="12%" />
+<col width="15%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>keys</td>
+<td>是</td>
+<td>Array</td>
+<td>资产唯一编号 例：[1,2,3,4,5]</td>
+</tr>
+<tr class="row-even"><td>fromUserAddr</td>
+<td>是</td>
+<td>string</td>
+<td>流转用户地址</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>是</td>
+<td>number</td>
+<td>流转用户密码</td>
+</tr>
+<tr class="row-even"><td>toUserAddr</td>
+<td>是</td>
+<td>number</td>
+<td>接收用户地址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;fromUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;toUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;完成,失败的key查看data列表&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">1591338217080</span><span class="p">,</span>
+        <span class="s2">&quot;failList&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>Object</td>
+<td>数据时间戳</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>number</td>
+<td>交易时间戳</td>
+</tr>
+<tr class="row-odd"><td>failList</td>
+<td>Array</td>
+<td>流转失败的资产列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>8. 流转（本地加签）<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>流转，可在本地把加签好的数据直接传入后台，无需传入密码，安全性高。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/changeOwnerSign</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="10%" />
+<col width="13%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>资产唯一编号</td>
+</tr>
+<tr class="row-even"><td>fromUserAddr</td>
+<td>是</td>
+<td>string</td>
+<td>流转用户地址</td>
+</tr>
+<tr class="row-odd"><td>signInfo</td>
+<td>是</td>
+<td>string</td>
+<td>加签后的数据（通过本地特有加签方法加签）</td>
+</tr>
+<tr class="row-even"><td>toUserAddr</td>
+<td>是</td>
+<td>number</td>
+<td>接收用户地址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;fromUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;toUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;0x09dd6fabc8071f88f9d6b64e03a1bb51f64ffe5ebb165203e6fde3e8b2c0d53f630b8120fe81d8bcffcdf1a67fc3daa87ea264f91ec9fe44b67a5521b0b2e5cc1b&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">1591338217080</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>数据信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>number</td>
+<td>交易时间戳</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>9. 批量流转（本地加签）<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>批量流转，可在本地把加签好的数据直接传入后台，无需传入密码，安全性高。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/batchChangeOwnerSign</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="10%" />
+<col width="13%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>keys</td>
+<td>是</td>
+<td>Array</td>
+<td>资产唯一编号 例：[1,2,3,4,5]</td>
+</tr>
+<tr class="row-even"><td>fromUserAddr</td>
+<td>是</td>
+<td>string</td>
+<td>流转用户地址</td>
+</tr>
+<tr class="row-odd"><td>signInfo</td>
+<td>是</td>
+<td>string</td>
+<td>加签后的数据（通过本地特有加签方法加签）</td>
+</tr>
+<tr class="row-even"><td>toUserAddr</td>
+<td>是</td>
+<td>number</td>
+<td>接收用户地址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;fromUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8ef73a369711f309c8183d3633b141b78cb68835&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;toUserAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;0x09dd6fabc8071f88f9d6b64e03a1bb51f64ffe5ebb165203e6fde3e8b2c0d53f630b8120fe81d8bcffcdf1a67fc3daa87ea264f91ec9fe44b67a5521b0b2e5cc1b&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;完成,失败的key查看data列表&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">1591338217080</span><span class="p">,</span>
+        <span class="s2">&quot;failList&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>Object</td>
+<td>数据时间戳</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="22%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>number</td>
+<td>交易时间戳</td>
+</tr>
+<tr class="row-odd"><td>failList</td>
+<td>Array</td>
+<td>流转失败的资产列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h2>10. 校验<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>校验是否上链</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/traceCheck</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="19%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>资产唯一编号</td>
+</tr>
+<tr class="row-even"><td>proof</td>
+<td>是</td>
+<td>string</td>
+<td>proof证明路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">4dc7876b8edc94a5791ad1cc18498f65560e12b9df308b689e28d3f23f026769</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">ac37ca9ea554e6f4239d00359c342705f254df9611bb95eb25641166b11a8308</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0df9f436c177e9aa90d47697c5bb2038553f48a4f846757ad0a6d762ef9a34a0</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">545922ac6f713881e04165ea0a8190d0a79965a1d8cef26851964241bc33267b</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">333459ecc0b673a964cf445d1e6f8099bba14940d414e16626e89902cb2a16bf</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">49f64c54fb86e54b4281b32fa539e0166f23b9c1d52928e12a46914f7e20a308</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">be9c408db55ab55c819ec9e271274e387ddcfaa292361eef18273788f5c36fee</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">4ab69295400dc01b4441ccee5cc65234f90ee91bb441a5b54c339b1fa2e169b2</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">592ddd50c7da7dcfe0394a6ef2a2c431a97929b870776693fe07bfa4534c27ef</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3c796a92bb8083757f8369b23092e9a6215c562ed29ed217cce1f185625bc8d2</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;校验结果：成功&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h2>11. 根据用户获取资产<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>根据用户获取资产</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getUserToken</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="15%" />
+<col width="19%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>用户地址</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>否</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-even"><td>page</td>
+<td>是</td>
+<td>number</td>
+<td>页数</td>
+</tr>
+<tr class="row-odd"><td>rows</td>
+<td>是</td>
+<td>number</td>
+<td>条数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;userAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;查询成功&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;recordsTotal&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;pageTotal&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ec787508e8e4e37a03f92d2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1590138663854&amp;1&amp;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&amp;0x8f0f4482081b8d266ccc050ecd0110efd4d988eea2d126c5e422cfdc517cac422dfa02f785ef0437918de27decaf36949a92109d13c7f4d6cc3233ba38ee52651b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;a797b12d6b2d7d5e89aaa4cdc7a3e0627a4b59910af8a415f7bc717c49c514ad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">c325b46b19835bab28a4866698d307f211e25f68390c90ead4e85f63326e512f</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">bb67192158f620d1c2595a703855845a980c116825aec38f60a602e0642a89a9</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">d77a193767bf5aff053b6e84d71611ca6a5f2c6bb6fb19ae585c72f5bb3c2953</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">4d5afc27c79cba9095e6f28d976c1a892f6ad002068e3041fcf2d443fe3251d5</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">7ac0a114b6fc2e30294004e51bcf3df84bcbcc00b4aacd19b51629d4015bfcde</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">2838ee98b56d3b136918adec26d731403ac3814e2d3f4de57abc8f00018eb6f5</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">57e6e9992454fe0b61520bec968f71ee16da7236d8642b96c775af6ab7518d19</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">189577ecba4c767e7836e396de73a9743e067b50fcb8be3568e76437ecb048f7</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">186a5c6ed1a4a739c80764679a4aaefb7c11f0576e792d397c41a6e55064bc2e</span><span class="se">\&quot;</span><span class="s2">},{</span><span class="se">\&quot;</span><span class="s2">right</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">194039a8700467582007bfb383d58dce8c732e6f9f9bab74de968200f6fb0c21</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1590138672706</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1d69e08ef66368ca03e390de66ef383627dcde35316b295139861a22bd9ca569&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4342a044f209d872f7a2a19b2f597afc5f1e94ab70bd46f7ead282e16308cafb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;contractAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;0x29e5c10152dc6a5609aaafc974d16de6f0d0ff96&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tempValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="26%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>recordsTotal</td>
+<td>number</td>
+<td>总条数</td>
+</tr>
+<tr class="row-odd"><td>pageTotal</td>
+<td>number</td>
+<td>总页数</td>
+</tr>
+<tr class="row-even"><td>page</td>
+<td>number</td>
+<td>当前页数</td>
+</tr>
+<tr class="row-odd"><td>records</td>
+<td>array</td>
+<td>数据列表</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="17%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">records参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>_id</td>
+<td>string</td>
+<td>id编码</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>资产唯一编号</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string</td>
+<td>资产流转记录</td>
+</tr>
+<tr class="row-even"><td>keyHash</td>
+<td>string</td>
+<td>资产唯一编号哈希值</td>
+</tr>
+<tr class="row-odd"><td>valueHash</td>
+<td>string</td>
+<td>资产流转记录哈希值</td>
+</tr>
+<tr class="row-even"><td>updateTime</td>
+<td>number</td>
+<td>更新时间戳</td>
+</tr>
+<tr class="row-odd"><td>txHash</td>
+<td>string</td>
+<td>交易哈希值</td>
+</tr>
+<tr class="row-even"><td>valueProof</td>
+<td>rootHash</td>
+<td>merkelTree根哈希值</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>string</td>
+<td>当前拥有者</td>
+</tr>
+<tr class="row-even"><td>contractAddress</td>
+<td>string</td>
+<td>所在合约地址</td>
+</tr>
+<tr class="row-odd"><td>tempValue</td>
+<td>string</td>
+<td>未确认的流转记录</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>string</td>
+<td>是否确认，“0”：未确认，“1”：已确认</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2>12. 根据资产唯一编号获取资产流转记录<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>根据资产唯一编号获取资产流转记录</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getTokenTransfe</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="19%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（详见配置说明）</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>资产唯一编号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;查询成功&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;confirmedList&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;1590139186911&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;0x292103a4b1d06d42bab4fee2cf3721485ac12b0b&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="27%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>object</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="19%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>confirmedList</td>
+<td>array</td>
+<td>已确认的流转记录</td>
+</tr>
+<tr class="row-odd"><td>confirmingList</td>
+<td>array</td>
+<td>未确认的流转记录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<ul class="simple">
+<li>服务异常状态码</li>
+</ul>
+<p>501：find db异常</p>
+<p>502：update db异常</p>
+<ul class="simple">
+<li>业务异常状态码</li>
+</ul>
+<p>610：初始化MerkleTools失败</p>
+<p>611：获取合约失败</p>
+<p>612：makeTree数据初始化失败</p>
+<p>614：初始化标签时，rpc调用addKVLeaf失败</p>
+<p>617：入厂时候rpc调用modifyTraceValue异常</p>
+<p>618：入厂时候rpc调用getTraceValue异常</p>
+<p>619：该用户无权限操作此数据</p>
+<p>621：入厂时候key不合法</p>
+<p>622：签名验证失败</p>
+<p>623：用户未登录</p>
+<p>624：上链未确认</p>
+<p>625：校验失败</p>
+<p>626：调用合约出错</p>
+<p>627：调用rpc出错</p>
+<p>628：查询资产为空</p>
+<p>629：资产唯一编号不合法</p>
+<p>630：注册失败</p>
+<p>631：密码错误</p>
+<p>632：登录失败</p>
+<p>633：keyStore登录解析keystore失败</p>
+<p>634：登录失败,请用keyStore方式登录</p>
+<p>635：设置缓存时候，验签失败</p>
+<p>636：退出失败</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="ApiSL20.html" title="混合支付平台 – SL20 API 接口说明"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >墨珩混合支付系统</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,518 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Restful API 简介 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="联盟链监控" href="../Monitor.html" />
+    <link rel="prev" title="联盟链SDK介绍" href="Sdk.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../Monitor.html" title="联盟链监控"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Sdk.html" title="联盟链SDK介绍"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Restful API 简介</a><ul>
+<li><a class="reference internal" href="#url">URL设计</a></li>
+<li><a class="reference internal" href="#id1">结构返回</a></li>
+<li><a class="reference internal" href="#id2">接口访问控制</a></li>
+<li><a class="reference internal" href="#id3">私钥安全</a></li>
+<li><a class="reference internal" href="#id4">Restful API 接口</a><ul>
+<li><a class="reference internal" href="#api">API认证</a></li>
+<li><a class="reference internal" href="#id5">账户注册</a></li>
+<li><a class="reference internal" href="#id6">账户登录</a></li>
+<li><a class="reference internal" href="#id7">账户余额</a></li>
+<li><a class="reference internal" href="#id8">区块高度</a></li>
+<li><a class="reference internal" href="#id9">下次续费区块高度</a></li>
+<li><a class="reference internal" href="#ssnid">联盟链ssnID</a></li>
+<li><a class="reference internal" href="#id10">获得联盟链已注册合约列表</a></li>
+<li><a class="reference internal" href="#id11">获得联盟链详细信息</a></li>
+<li><a class="reference internal" href="#id12">区块信息</a></li>
+<li><a class="reference internal" href="#id13">交易明细</a></li>
+<li><a class="reference internal" href="#id14">交易详情</a></li>
+<li><a class="reference internal" href="#id15">转账</a></li>
+<li><a class="reference internal" href="#id16">调用智能合约</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="Sdk.html"
+                        title="上一章">联盟链SDK介绍</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="../Monitor.html"
+                        title="下一章">联盟链监控</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/supersolid/Interface/Api.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="restful-api">
+<h1>Restful API 简介<a class="headerlink" href="#restful-api" title="永久链接至标题">¶</a></h1>
+<p>为了简化DAPP的应用，我们以Restful API的方式提供给用户一种便捷的接入方法。通过HTTP对SDK的基础操作进行一系列封装，来实现对用户不同编程语言的兼容。</p>
+<p>DAPP用户当调用客户端SDK有困难时，可以通过服务端调用的方式实现对联盟链SDK的接入。</p>
+<div class="section" id="url">
+<h2>URL设计<a class="headerlink" href="#url" title="永久链接至标题">¶</a></h2>
+<p>使用http作为API的通信协议，目前采用较多的POST方法。</p>
+<p>url格式:    http(s)://server.com/api/{module}/{version}/{method}</p>
+<p>关于version，各模块支持多版本，默认version为v1.0</p>
+<p>POST提交格式采用form表单参数    Content-Type: application/x-www-form-urlencoded</p>
+</div>
+<div class="section" id="id1">
+<h2>结构返回<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>返回体格式采用json格式</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;*********&quot;</span>
+<span class="p">}</span>
+<span class="n">success</span><span class="p">:</span>        <span class="n">true</span> <span class="o">-</span> <span class="n">成功</span>    <span class="n">false</span> <span class="o">-</span> <span class="n">失败</span>
+<span class="n">message</span><span class="p">:</span>        <span class="n">失败时的错误信息</span>
+<span class="n">data</span><span class="p">:</span>           <span class="n">接口返回数据</span>
+</pre></div>
+</div>
+<p>相关状态码</p>
+<p>200 OK</p>
+<p>403 token权限受限</p>
+<p>404     接口不存在</p>
+</div>
+<div class="section" id="id2">
+<h2>接口访问控制<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>API访问控制，需先请求访问的用户名和密码，先调用auth接口请求访问token。</p>
+<p>各api接口需要token参数调用，不然会返回403错误。</p>
+<p>token有过期机制，目前是2小时有效。</p>
+</div>
+<div class="section" id="id3">
+<h2>私钥安全<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>对于账号私钥的安全提供了两种方案。</p>
+<ol class="arabic simple">
+<li>dapp注册账户后，收到返回的私钥（privatekey），后续发送交易直接传递私钥</li>
+<li>dapp注册账户后，会返回一个加密串（encode），后续发送交易传递加密串和账户密码，系统会解码获得私钥进行签名。</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>Restful API 接口<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="api">
+<h3>API认证<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h3>
+<p>请求访问token，提供权限调用API的其他接口</p>
+<p>方法：auth</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="p">:</span>        <span class="n">授权账号</span>
+<span class="n">pwd</span><span class="p">:</span>            <span class="n">授权账号密码</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/auth
+BODY：account=******&amp;pwd=******
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;token内容&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>账户注册<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>方法：register</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span><span class="p">:</span>  <span class="n">账户密码</span>
+<span class="n">token</span><span class="p">:</span>  <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/account/v1.0/register
+BODY：pwd=********&amp;token=********************************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="n">账户地址</span><span class="p">,</span>
+        <span class="s2">&quot;encode&quot;</span><span class="p">:</span> <span class="n">账户加密串</span><span class="p">,</span>
+        <span class="s2">&quot;keystore&quot;</span><span class="p">:</span> <span class="n">账户keystore信息</span><span class="p">,</span>
+        <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="n">账户私钥</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>账户登录<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>方法：login</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">address</span><span class="p">:</span>        <span class="n">账户地址</span>
+<span class="n">pwd</span><span class="p">:</span>            <span class="n">账户密码</span>
+<span class="n">encode</span><span class="p">:</span>         <span class="n">账户加密串</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/account/v1.0/login
+BODY：address=0x********&amp;pwd=*****&amp;encode=*******&amp;token=************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">账户地址</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>账户余额<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>方法：getBalance</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">address</span><span class="p">:</span>        <span class="n">账号地址</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getBalance
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;address=0x******&amp;token=*****************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">账户余额</span> <span class="p">(</span><span class="n">联盟链原生币数量</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>区块高度<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>方法：getBlockNumber</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getBlockNumber
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;token=***************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">区块高度</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>下次续费区块高度<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>方法：getBlockThreshold</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getBlockThreshold
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;token=***************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">续费区块高度</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssnid">
+<h3>联盟链ssnID<a class="headerlink" href="#ssnid" title="永久链接至标题">¶</a></h3>
+<p>方法：getSsnID</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getSsnID
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;token=***************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">联盟链ssnID</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>获得联盟链已注册合约列表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>方法：getContractAddrList</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getContractAddrList
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;token=***************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">合约列表</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>获得联盟链详细信息<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>方法：getAppChainInfo</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getAppChainInfo
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;token=***************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">联盟链详细信息</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>区块信息<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>方法：getBlock</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="n">blocknum</span><span class="p">:</span>       <span class="n">区块号或者区块hash</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getBlock
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;blocknum=10036&amp;token=******************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">区块信息</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>交易明细<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>方法：getTransactionByHash</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="nb">hash</span><span class="p">:</span>           <span class="n">交易hash</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getTransactionByHash
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;hash=0x**&amp;token=******************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">交易明细</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>交易详情<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>方法：getTransactionReceiptByHash</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnip</span><span class="p">:</span>          <span class="n">联盟链节点地址</span>
+<span class="n">ssnport</span><span class="p">:</span>        <span class="n">联盟链节点端口</span>
+<span class="nb">hash</span><span class="p">:</span>           <span class="n">交易hash</span>
+<span class="n">token</span><span class="p">:</span>          <span class="n">auth返回的授权token</span>
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/getTransactionReceiptByHash
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;hash=0x**&amp;token=******************
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">交易详情</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>转账<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>方法：transferCoin</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssnip:          联盟链节点地址
+ssnport:        联盟链节点端口
+from:           源账号地址
+to:             目标账号地址
+amount:         数量（联盟链原生币数量）
+data:           备注信息
+privatekey: 源账号私钥 （传privatekey，可忽略参数pwd和encode，不传privatekey，则必须传pwd和encode认证）
+pwd：            账户密码
+encode： 账户加密串
+token:          auth返回的授权token
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/transferCoin
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;from=0x**&amp;to=0x***&amp;amount=10&amp;data=*****&amp;privatekey=0x**&amp;token=*******
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">交易hash</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>调用智能合约<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>方法：callContract</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssnip:          联盟链节点地址
+ssnport:        联盟链节点端口
+contractaddress:  合约地址
+param:          例如合约中存在一个无参的方法getDechatInfo，则传入[&quot;getDechatInfo&quot;];
+                        若存在一个有参的方法getTopicList(uint pageNum, uint pageSize), 则传入[&quot;getTopicList&quot;, 0, 20]
+token:          auth返回的授权token
+</pre></div>
+</div>
+<p>调用示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST: http://139.198.126.104:8088/api/ssn/v1.0/callContract
+BODY：ssnip=127.0.0.1&amp;ssnport=8545&amp;contractaddress=0x*****&amp;param=[&quot;getTopicList&quot;, 0, 20]&amp;token=***********
+</pre></div>
+</div>
+<p>返回数据示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">调用合约返回结果</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../Monitor.html" title="联盟链监控"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Sdk.html" title="联盟链SDK介绍"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

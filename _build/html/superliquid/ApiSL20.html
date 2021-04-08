@@ -1,0 +1,2214 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>混合支付平台 – SL20 API 接口说明 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="混合支付平台 – SL21 API 接口说明" href="ApiSL21.html" />
+    <link rel="prev" title="混合支付范例" href="SLsample.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="ApiSL21.html" title="混合支付平台 – SL21 API 接口说明"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="SLsample.html" title="混合支付范例"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">墨珩混合支付系统（超易泰）</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">混合支付平台 – SL20 API 接口说明</a><ul>
+<li><a class="reference internal" href="#id1">查询模块</a><ul>
+<li><a class="reference internal" href="#id2">查询某账户的所有子账户列表</a></li>
+<li><a class="reference internal" href="#id3">查询用户维度转账记录</a></li>
+<li><a class="reference internal" href="#id4">获取当前可用子账户列表</a></li>
+<li><a class="reference internal" href="#id5">查询子账户维度转账记录</a></li>
+<li><a class="reference internal" href="#id6">查询充值/提取记录</a></li>
+<li><a class="reference internal" href="#id7">获取交易详细信息</a></li>
+<li><a class="reference internal" href="#id8">获取提取详细信息</a></li>
+<li><a class="reference internal" href="#id9">获取充值交易体</a></li>
+<li><a class="reference internal" href="#id10">获取提取交易体</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">操作模块</a><ul>
+<li><a class="reference internal" href="#id12">充值</a></li>
+<li><a class="reference internal" href="#id13">提现</a></li>
+<li><a class="reference internal" href="#id14">转账</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="SLsample.html"
+                        title="上一章">混合支付范例</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="ApiSL21.html"
+                        title="下一章">混合支付平台 – SL21 API 接口说明</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/superliquid/ApiSL20.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sl20-api">
+<h1>混合支付平台 – SL20 API 接口说明<a class="headerlink" href="#sl20-api" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>查询模块<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>查询某账户的所有子账户列表<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>查询某账户下，所有子账户列表，包括余额为零的子账户。数字资产在SL20平台有子账户模式，子账户的调度由系统自动完成，用户只需关注总额即可。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getUserTokens</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="13%" />
+<col width="19%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;balanceArr&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;balanceType&quot;</span><span class="p">:</span> <span class="s2">&quot;record&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0,0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591955961935</span><span class="p">,</span>
+            <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">bc52dd634277c4a34a2d6210994a9a5e2ab6d33bb4a3a8963410e00ca6c15a02</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">165</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;totalBalance&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="18%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-odd"><td>balance</td>
+<td>number</td>
+<td>子账户余额</td>
+</tr>
+<tr class="row-even"><td>proof</td>
+<td>string</td>
+<td>子账户proof路径</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>string</td>
+<td>子账户拥有者</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>string</td>
+<td>当前value</td>
+</tr>
+<tr class="row-odd"><td>updateTime</td>
+<td>number</td>
+<td>最近更新时间</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>number</td>
+<td>子账户拥有者</td>
+</tr>
+<tr class="row-odd"><td>totalBalance</td>
+<td>number</td>
+<td>总账户余额</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<blockquote>
+<div><p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h3>查询用户维度转账记录<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>查询用户SL20快速支付交易记录</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getUserTransferList</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="13%" />
+<col width="19%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>page</td>
+<td>是</td>
+<td>number</td>
+<td>当前第几页</td>
+</tr>
+<tr class="row-odd"><td>rows</td>
+<td>是</td>
+<td>number</td>
+<td>每页多少条</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;totalNum&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;dataList&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee35b72bb788219aed8bfde&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958386988&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591958386988</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee35b67bb788219aed8bfdb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958375679&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591958375679</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>boolean</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="11%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>uniqueNo</td>
+<td>number</td>
+<td>唯一编码</td>
+</tr>
+<tr class="row-odd"><td>fromOwner</td>
+<td>string</td>
+<td>支付方地址</td>
+</tr>
+<tr class="row-even"><td>toOwner</td>
+<td>string</td>
+<td>接收方地址</td>
+</tr>
+<tr class="row-odd"><td>updateTime</td>
+<td>number</td>
+<td>转账时间</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>number</td>
+<td>转账金额</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>number</td>
+<td>类型（1-支付 2-收款）</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>number</td>
+<td>状态（0-等待上链 1-上链成功 2-等待确认）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<blockquote>
+<div><p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h3>获取当前可用子账户列表<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>获取当前可用子账户列表，不含余额为零的账户（转账和提取操作前调用）</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getBalanceWhenTransfer</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="8%" />
+<col width="12%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>发送人/当前用户</td>
+</tr>
+<tr class="row-odd"><td>toOwner</td>
+<td>是</td>
+<td>string</td>
+<td>接收人（提取时传空字符串”“）</td>
+</tr>
+<tr class="row-even"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>操作类型（1-转账/支付，2-提取）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;balanceArr&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">163</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">3d3286f7cd19074f04e514b0c6c237e757513fb32820698b790e1dec801d947a</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">161</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">bb668ca95563216088b98a62557fa1e26802563f3919ac78ae30533bb9ed422c</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;proof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">79d6eaa2676189eb927f2e16a70091474078e2117c3fc607d35cdc6b591ef355</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span>
+        <span class="p">}],</span>
+        <span class="s2">&quot;toKey&quot;</span><span class="p">:</span> <span class="mi">139</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="12%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-odd"><td>balance</td>
+<td>number</td>
+<td>子账户余额</td>
+</tr>
+<tr class="row-even"><td>proof</td>
+<td>string</td>
+<td>子账户proof路径</td>
+</tr>
+<tr class="row-odd"><td>toKey</td>
+<td>number</td>
+<td>接收方子账户（提取操作时此值为0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h3>查询子账户维度转账记录<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>查询子账户维度转账记录。 查询某个账户下子账户的转账记录。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getTokenTransferList</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="13%" />
+<col width="19%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>子账户</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>是</td>
+<td>number</td>
+<td>当前第几页</td>
+</tr>
+<tr class="row-even"><td>rows</td>
+<td>是</td>
+<td>number</td>
+<td>每页多少条</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;totalNum&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;dataList&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee35b72bb788219aed8bfdf&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958386990&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userTransferNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958386988&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromKey&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;toKey&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;e0f05da93a0f5a86a3be5fc0e301606513c9f7e59dac2357348aa0f2f47db984&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;f9dc365824f56f533fd019bd3ef7ebae1d20fffda31756a4bd49b206e5fa99e5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">e0f05da93a0f5a86a3be5fc0e301606513c9f7e59dac2357348aa0f2f47db984</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591958386990</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xddb6218cee4f620be9c38c2c2cb2197177d9e4d4ca7168688abd620efce9adff&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5321537f0a2c43ce5961be733717f2d5b4f6269f03dca60f64e7902072f92be1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&amp;debit,1591958375681,166,139,10,0xf486c721384c59d343620d2f65ee77b04bf1453ed7be9fc8981c9d8dbbb56938229d54bee4d5533f3110e0121d24ab7a839c0961db1d9cf36a5a403cad9d7d5e1c&amp;debit,1591958386990,166,139,10,0xf486c721384c59d343620d2f65ee77b04bf1453ed7be9fc8981c9d8dbbb56938229d54bee4d5533f3110e0121d24ab7a839c0961db1d9cf36a5a403cad9d7d5e1c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78119</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee35b67bb788219aed8bfdc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958375681&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userTransferNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591958375679&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromKey&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;toKey&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;e0f05da93a0f5a86a3be5fc0e301606513c9f7e59dac2357348aa0f2f47db984&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;9c9884ce2b10bbf257ba5671dc3f6abd0f8ee5be25f5643fb0baf2ccb03c1808&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">e0f05da93a0f5a86a3be5fc0e301606513c9f7e59dac2357348aa0f2f47db984</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591958375681</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0492b1666969a4324fcc48b8ad4016c66f254fa1c1b87db25684eb30fb49c975&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe4591a9482218602fdba783c114cf22d3a6cae2323f0a259aa19bf4dedd5c086&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0xe7557544513b68aabe6288b6c9da1d226ef8d8c0&amp;debit,1591958375681,166,139,10,0xf486c721384c59d343620d2f65ee77b04bf1453ed7be9fc8981c9d8dbbb56938229d54bee4d5533f3110e0121d24ab7a839c0961db1d9cf36a5a403cad9d7d5e1c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">166</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78118</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>boolean</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-odd"><td>uniqueNo</td>
+<td>string</td>
+<td>唯一编码</td>
+</tr>
+<tr class="row-even"><td>userTransferNo</td>
+<td>string</td>
+<td>用户转账唯一编码</td>
+</tr>
+<tr class="row-odd"><td>fromKey</td>
+<td>number</td>
+<td>支付key</td>
+</tr>
+<tr class="row-even"><td>toKey</td>
+<td>number</td>
+<td>接收key</td>
+</tr>
+<tr class="row-odd"><td>fromOwner</td>
+<td>string</td>
+<td>支付方地址</td>
+</tr>
+<tr class="row-even"><td>toOwner</td>
+<td>string</td>
+<td>接收方地址</td>
+</tr>
+<tr class="row-odd"><td>keyHash</td>
+<td>string</td>
+<td>编号hash</td>
+</tr>
+<tr class="row-even"><td>valueHash</td>
+<td>string</td>
+<td>value的hash</td>
+</tr>
+<tr class="row-odd"><td>valueProof</td>
+<td>string</td>
+<td>提现的proof</td>
+</tr>
+<tr class="row-even"><td>updateTime</td>
+<td>number</td>
+<td>转账时间</td>
+</tr>
+<tr class="row-odd"><td>txHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-even"><td>rootHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>number</td>
+<td>转账金额</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>number</td>
+<td>类型（1-支付 2-收款）</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>number</td>
+<td>状态（0-等待上链 1-上链成功 2-等待确认）</td>
+</tr>
+<tr class="row-even"><td>owner</td>
+<td>string</td>
+<td>token拥有者</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string</td>
+<td>value明文</td>
+</tr>
+<tr class="row-even"><td>balance</td>
+<td>number</td>
+<td>token余额</td>
+</tr>
+<tr class="row-odd"><td>max</td>
+<td>number</td>
+<td>当前树子钱包最大编号</td>
+</tr>
+<tr class="row-even"><td>min</td>
+<td>number</td>
+<td>当前树子钱包最小编号</td>
+</tr>
+<tr class="row-odd"><td>blockNumber</td>
+<td>number</td>
+<td>区块号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h3>查询充值/提取记录<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>查询充值/提取记录</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getChargeOrWithdrawList</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="10%" />
+<col width="15%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>是</td>
+<td>number</td>
+<td>类型（1-充值 2-提取）</td>
+</tr>
+<tr class="row-odd"><td>page</td>
+<td>是</td>
+<td>number</td>
+<td>当前第几页</td>
+</tr>
+<tr class="row-even"><td>rows</td>
+<td>是</td>
+<td>number</td>
+<td>每页多少条</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;totalNum&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;dataList&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee3711351b73a19898a1eae&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591963923170&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;f57e5cb1f4532c008183057ecc94283801fcb5afe2d1c190e3dfd38c4da08042&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;d19705a27e0d230d78256959d3553d7f155ca5d9f9f3181d2ba29c0a247f160b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">f57e5cb1f4532c008183057ecc94283801fcb5afe2d1c190e3dfd38c4da08042</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591963923174</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xeb1136cdb3abc324442e404e3b47fe9d632b50a155297a0b67aba1f8c7b8c79d&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78672</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xd12c15cc091c4928fae3440ecf6f39896f945f06dfbec2f5465f6075d60488ef&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee3710951b73a19898a1eac&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591963913169&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;80c3cd40fa35f9088b8741bd8be6153de05f661cfeeb4625ffbf5f4a6c3c02c4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;d19705a27e0d230d78256959d3553d7f155ca5d9f9f3181d2ba29c0a247f160b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">80c3cd40fa35f9088b8741bd8be6153de05f661cfeeb4625ffbf5f4a6c3c02c4</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591963913172</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2aeb338ee1bca43a149ec3c4e6a4b8286ecc657f4a0a50b8b7ace2dc00f5c00e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78671</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x18dcdc6ac87dbff259e0570cca03290890fab6f9374c1741a0b5c1d727a3f543&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>boolean</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>owner</td>
+<td>string</td>
+<td>子账户拥有者</td>
+</tr>
+<tr class="row-odd"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-even"><td>uniqueNo</td>
+<td>string</td>
+<td>唯一编码</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string</td>
+<td>value明文</td>
+</tr>
+<tr class="row-even"><td>keyHash</td>
+<td>string</td>
+<td>编号hash</td>
+</tr>
+<tr class="row-odd"><td>valueHash</td>
+<td>string</td>
+<td>value的hash</td>
+</tr>
+<tr class="row-even"><td>valueProof</td>
+<td>string</td>
+<td>提现的proof</td>
+</tr>
+<tr class="row-odd"><td>updateTime</td>
+<td>number</td>
+<td>转账时间</td>
+</tr>
+<tr class="row-even"><td>txHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-odd"><td>blockNumber</td>
+<td>number</td>
+<td>区块号</td>
+</tr>
+<tr class="row-even"><td>rootHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-odd"><td>min</td>
+<td>number</td>
+<td>当前树子钱包最小编号</td>
+</tr>
+<tr class="row-even"><td>max</td>
+<td>number</td>
+<td>当前树子钱包最大编号</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>number</td>
+<td>充值或提取金额</td>
+</tr>
+<tr class="row-even"><td>balance</td>
+<td>number</td>
+<td>token余额</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>number</td>
+<td>类型（1-支付 2-收款）</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>number</td>
+<td>状态（0-等待上链 1-上链成功 2-等待确认）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h3>获取交易详细信息<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>获取交易详细信息</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getUserTransferDetail</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="11%" />
+<col width="17%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>uniqueNo</td>
+<td>是</td>
+<td>string</td>
+<td>用户交易唯一编码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;userTransferRecord&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee37114bb788219aed8bfe2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591963924508&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591963924508</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;tokenTransferRecord&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee37114bb788219aed8bfe3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591963924513&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userTransferNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591963924508&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromKey&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;toKey&quot;</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1e236ac89d1ca8bc77eae55fa32ad1189b4b0b5e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;f57e5cb1f4532c008183057ecc94283801fcb5afe2d1c190e3dfd38c4da08042&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;62fa12c6c91b588aa29f07d1cbd6909ac3f843f6dd88f946bc70fe8e686b1ce9&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueProof&quot;</span><span class="p">:</span> <span class="s2">&quot;[{</span><span class="se">\&quot;</span><span class="s2">left</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">f57e5cb1f4532c008183057ecc94283801fcb5afe2d1c190e3dfd38c4da08042</span><span class="se">\&quot;</span><span class="s2">}]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591963924513</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xbecbbd2b53d1967c5a5752452429c0cbbc61f0ec8da6b233cf60d684e15a7a76&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1f9614f8d9af138b854adcf7445e310b36fc9d66f62e17816f496f96336a573e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0x731d00ede888d9435250545366a29396c5a5c96a&amp;debit,1591963924513,169,139,10,0x58be683c696688829cf199161a3623c009480733f49d06ec38b208179a592f3e4b7da75f94c2ffa8a5b2ae87e68dc95072e22d51180fc804f1b39341d64810c21c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">169</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78673</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-odd"><td>uniqueNo</td>
+<td>string</td>
+<td>唯一编码</td>
+</tr>
+<tr class="row-even"><td>userTransferNo</td>
+<td>string</td>
+<td>用户转账唯一编码</td>
+</tr>
+<tr class="row-odd"><td>fromKey</td>
+<td>number</td>
+<td>支付key</td>
+</tr>
+<tr class="row-even"><td>toKey</td>
+<td>number</td>
+<td>接收key</td>
+</tr>
+<tr class="row-odd"><td>fromOwner</td>
+<td>string</td>
+<td>支付方地址</td>
+</tr>
+<tr class="row-even"><td>toOwner</td>
+<td>string</td>
+<td>接收方地址</td>
+</tr>
+<tr class="row-odd"><td>keyHash</td>
+<td>string</td>
+<td>编号hash</td>
+</tr>
+<tr class="row-even"><td>valueHash</td>
+<td>string</td>
+<td>value的hash</td>
+</tr>
+<tr class="row-odd"><td>valueProof</td>
+<td>string</td>
+<td>提现的proof</td>
+</tr>
+<tr class="row-even"><td>updateTime</td>
+<td>number</td>
+<td>转账时间</td>
+</tr>
+<tr class="row-odd"><td>txHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-even"><td>rootHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>number</td>
+<td>转账金额</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>number</td>
+<td>类型（1-支付 2-收款）</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>number</td>
+<td>状态（0-等待上链 1-上链成功 2-等待确认）</td>
+</tr>
+<tr class="row-even"><td>owner</td>
+<td>string</td>
+<td>token拥有者</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string</td>
+<td>value明文</td>
+</tr>
+<tr class="row-even"><td>balance</td>
+<td>number</td>
+<td>token余额</td>
+</tr>
+<tr class="row-odd"><td>max</td>
+<td>number</td>
+<td>当前树子钱包最大编号</td>
+</tr>
+<tr class="row-even"><td>min</td>
+<td>number</td>
+<td>当前树子钱包最小编号</td>
+</tr>
+<tr class="row-odd"><td>blockNumber</td>
+<td>number</td>
+<td>区块号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h3>获取提取详细信息<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>获取提取详细信息</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getWithdrawDetail</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="11%" />
+<col width="17%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>当前用户地址</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>uniqueNo</td>
+<td>是</td>
+<td>string</td>
+<td>用户交易唯一编码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;userWithdrawRecord&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee372cdbb788219aed8bfe9&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591964365117&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toOwner&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591964365140</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;tokenWithdrawRecord&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5ee372cdbb788219aed8bfe8&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;balance&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;0x731d00ede888d9435250545366a29396c5a5c96a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;updateTime&quot;</span><span class="p">:</span> <span class="mi">1591964373197</span><span class="p">,</span>
+            <span class="s2">&quot;uniqueNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591964365128&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;userTransferNo&quot;</span><span class="p">:</span> <span class="s2">&quot;1591964365117&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;keyHash&quot;</span><span class="p">:</span> <span class="s2">&quot;80c3cd40fa35f9088b8741bd8be6153de05f661cfeeb4625ffbf5f4a6c3c02c4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;txHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0xdddcc59f95a22ae146181bf8397ee4e7042a51077d1166c2db11aa982c8e0f74&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rootHash&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4e3543df7e627956c573e78344314a1ca021acc96d08d671d9526d578b148113&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;blockNumber&quot;</span><span class="p">:</span> <span class="mi">78717</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100,0x731d00ede888d9435250545366a29396c5a5c96a&amp;debit,1591963933374,168,139,10,0x85b50a08348589e09ac7124ff3378ea44edf50bed71f61902bf5c01e735afa3a708026b56526ce7c06827a718861254837f8f4eaa5db8ef4764f56c9460f7dcc1b&amp;withDraw,1591964365128,168,10,0x61085d64e7d6ce6671aea2ddc0499a23ce30c8fab8ad39b6c9fb77d8bbcc794e52c4a8d12232d169f4c32bd935617d9e4b96fb8264d26ac862c97bc127c5f32c1b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;valueHash&quot;</span><span class="p">:</span> <span class="s2">&quot;d7dbe253865bb517278e82ac0b7aab399dd8ebef289d9193e8c90f1b30455992&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__v&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>number</td>
+<td>子账户编号</td>
+</tr>
+<tr class="row-odd"><td>uniqueNo</td>
+<td>string</td>
+<td>唯一编码</td>
+</tr>
+<tr class="row-even"><td>userTransferNo</td>
+<td>string</td>
+<td>用户转账唯一编码</td>
+</tr>
+<tr class="row-odd"><td>fromKey</td>
+<td>number</td>
+<td>支付key</td>
+</tr>
+<tr class="row-even"><td>toKey</td>
+<td>number</td>
+<td>接收key</td>
+</tr>
+<tr class="row-odd"><td>fromOwner</td>
+<td>string</td>
+<td>支付方地址</td>
+</tr>
+<tr class="row-even"><td>toOwner</td>
+<td>string</td>
+<td>接收方地址</td>
+</tr>
+<tr class="row-odd"><td>keyHash</td>
+<td>string</td>
+<td>编号hash</td>
+</tr>
+<tr class="row-even"><td>valueHash</td>
+<td>string</td>
+<td>value的hash</td>
+</tr>
+<tr class="row-odd"><td>valueProof</td>
+<td>string</td>
+<td>提现的proof</td>
+</tr>
+<tr class="row-even"><td>updateTime</td>
+<td>number</td>
+<td>转账时间</td>
+</tr>
+<tr class="row-odd"><td>txHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-even"><td>rootHash</td>
+<td>string</td>
+<td>上链交易hash</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>number</td>
+<td>转账金额</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>number</td>
+<td>类型（1-支付 2-收款）</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>number</td>
+<td>状态（0-等待上链 1-上链成功 2-等待确认）</td>
+</tr>
+<tr class="row-even"><td>owner</td>
+<td>string</td>
+<td>token拥有者</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>string</td>
+<td>value明文</td>
+</tr>
+<tr class="row-even"><td>balance</td>
+<td>number</td>
+<td>token余额</td>
+</tr>
+<tr class="row-odd"><td>max</td>
+<td>number</td>
+<td>当前树子钱包最大编号</td>
+</tr>
+<tr class="row-even"><td>min</td>
+<td>number</td>
+<td>当前树子钱包最小编号</td>
+</tr>
+<tr class="row-odd"><td>blockNumber</td>
+<td>number</td>
+<td>区块号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id9">
+<h3>获取充值交易体<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>获取充值交易体（充值前调用）。对于SL20系统充值，需要和区块链交互，此方法返回区块链的标准交易体，下一步需要对这个交易体本地签名后提交交易。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getChargeTx</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="11%" />
+<col width="17%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>发送人/当前用户</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>amount</td>
+<td>是</td>
+<td>number</td>
+<td>充值金额</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x50ea2fa73e0c380d296adab7db21f2ccee91e2e4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="s2">&quot;0x213f7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xabab995c2f646e792fd1b81479fbabf058dfaea3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0x64&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;0x4cddae28&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;shardingFlag&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;chainId&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5e6&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>客户端无需关注此交易体详细信息，获取后通过chai
+n3SignUtil.signTransaction，拿本地私钥对整个对象做签名即可，参考demo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id10">
+<h3>获取提取交易体<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>获取提取交易体（提取前调用）。对于SL20系统提取，需要和区块链交互，此方法返回区块链的标准交易体，下一步需要对这个交易体本地签名后提交交易。</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/getWithdrawTx</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="11%" />
+<col width="17%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userAddr</td>
+<td>是</td>
+<td>string</td>
+<td>发送人/当前用户</td>
+</tr>
+<tr class="row-odd"><td>loginToken</td>
+<td>是</td>
+<td>string</td>
+<td>当前登录凭证</td>
+</tr>
+<tr class="row-even"><td>key</td>
+<td>是</td>
+<td>number</td>
+<td>提取人子钱包</td>
+</tr>
+<tr class="row-odd"><td>amount</td>
+<td>是</td>
+<td>number</td>
+<td>充值金额</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;0x50ea2fa73e0c380d296adab7db21f2ccee91e2e4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="s2">&quot;0x29c92&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;0xabab995c2f646e792fd1b81479fbabf058dfaea3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;0x01f70b3c000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000a400000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;shardingFlag&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;chainId&quot;</span><span class="p">:</span> <span class="s2">&quot;0x5e6&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">data参数名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>客户端无需关注此交易体详细信息，获取后通过chai
+n3SignUtil.signTransaction，拿本地私钥对整个对象做签名即可，参考demo</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>操作模块<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h3>充值<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>充值-本地加签</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/charge</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="13%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>signTx</td>
+<td>是</td>
+<td>string</td>
+<td>加签交易体（加签方式参考demo）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id13">
+<h3>提现<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>提取-本地加签</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/withdraw</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+<col width="30%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>message1</td>
+<td>是</td>
+<td>string</td>
+<td>格式：us
+erAddr,totalAmo
+unt&amp;sign(userAd
+dr,totalAmount)
+，参考demo</td>
+</tr>
+<tr class="row-odd"><td>message2</td>
+<td>是</td>
+<td>string</td>
+<td>格式：[ { key:
+1001, amount:
+800, proof:
+“[]”,signInfo:
+sign(key,
+toKey，
+amount),signTx:
+sign(tx) }, {
+key: 1002,
+toKey: 2002,
+amount:
+100,proof:
+“[]”, signInfo:
+sign(key,
+toKey，
+amount),signTx:
+sign(tx) } ]，
+参考demo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>客户端操作：</strong> 1. 校验：提取金额不能大于账户余额</p>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id14">
+<h3>转账<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p><strong>简要描述：</strong></p>
+<ul class="simple">
+<li>转账-本地加签</li>
+</ul>
+<p><strong>请求URL：</strong> - <code class="docutils literal notranslate"><span class="pre">http://localhost:3001/transfer</span></code></p>
+<p><strong>请求方式：</strong> - POST</p>
+<p><strong>参数：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+<col width="30%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">必选</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>message1</td>
+<td>是</td>
+<td>string</td>
+<td>格式：
+fromOwner,toOwn
+er,totalAmount&amp;
+sign(fromOwner,
+toOwner,
+totalAmount)
+，参考demo</td>
+</tr>
+<tr class="row-odd"><td>message2</td>
+<td>是</td>
+<td>string</td>
+<td>格式：[ { key:
+1001, toKey:
+2001, amount:
+800, signInfo:
+sign(key,
+toKey，amount)
+}, { key: 1002,
+toKey: 2002,
+amount: 100,
+signInfo:
+sign(key,
+toKey，amount)
+} ]， 参考demo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>客户端操作：</strong> 1. 校验：转账金额不能大于付款账户余额 2.
+校验：发送人和接收人地址不能重复</p>
+<p><strong>返回示例</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>返回参数说明</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="24%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>statusCode</td>
+<td>number</td>
+<td>状态码</td>
+</tr>
+<tr class="row-odd"><td>success</td>
+<td>boolean</td>
+<td>true / false</td>
+</tr>
+<tr class="row-even"><td>message</td>
+<td>string</td>
+<td>异常说明</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>string</td>
+<td>查询信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>状态码</strong></p>
+<p>服务异常状态码</p>
+<ul class="simple">
+<li>501：db查询异常</li>
+<li>502：db插入或更新异常</li>
+<li>503：上链交易失败</li>
+<li>504：设置缓存失败</li>
+<li>505: 获取缓存失败</li>
+<li>506：登录失败</li>
+<li>507：rpc服务调用失败</li>
+</ul>
+<p>业务异常状态码</p>
+<ul class="simple">
+<li>600：解析用户信息失败</li>
+<li>601：已经有初始化token</li>
+<li>602：key不合法</li>
+<li>603：余额不足</li>
+<li>604：提取合法性校验失败</li>
+<li>605：当前token拥有者异常</li>
+<li>606：验签失败</li>
+<li>607：参数异常</li>
+<li>608：接收人地址不存在</li>
+<li>609：接收人无初始化子账户</li>
+<li>610：当前账户无上链余额</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="ApiSL21.html" title="混合支付平台 – SL21 API 接口说明"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="SLsample.html" title="混合支付范例"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >墨珩混合支付系统（超易泰）</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

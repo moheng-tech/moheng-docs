@@ -1,0 +1,643 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>联盟链SDK介绍 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Restful API 简介" href="Api.html" />
+    <link rel="prev" title="联盟链RPC介绍" href="Rpc.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Api.html" title="Restful API 简介"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Rpc.html" title="联盟链RPC介绍"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">联盟链SDK介绍</a><ul>
+<li><a class="reference internal" href="#id1">SDK的安装</a></li>
+<li><a class="reference internal" href="#nodejssdk">nodejs版SDK详述</a><ul>
+<li><a class="reference internal" href="#id2">异常处理</a></li>
+<li><a class="reference internal" href="#id3">账户注册</a><ul>
+<li><a class="reference internal" href="#id4">国际加密算法</a></li>
+<li><a class="reference internal" href="#id5">国密加密算法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">账户登录</a><ul>
+<li><a class="reference internal" href="#id7">国际加密算法</a></li>
+<li><a class="reference internal" href="#id8">国密加密算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssb">SSB模块接口</a><ul>
+<li><a class="reference internal" href="#id9">实例化SSB对象</a></li>
+<li><a class="reference internal" href="#id10">获取基础链区块高度</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssn">SSN模块接口</a><ul>
+<li><a class="reference internal" href="#id11">实例化ssn对象</a><ul>
+<li><a class="reference internal" href="#id12">国际加密算法</a></li>
+<li><a class="reference internal" href="#id13">国密加密算法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ssnid">获取联盟链ssnId</a></li>
+<li><a class="reference internal" href="#id14">获取下次续费块高度</a></li>
+<li><a class="reference internal" href="#id15">获取联盟链区块高度</a></li>
+<li><a class="reference internal" href="#id16">获取某一区间内的多个区块信息</a></li>
+<li><a class="reference internal" href="#id17">获取联盟链某一区块信息</a></li>
+<li><a class="reference internal" href="#hash">通过交易HASH获取联盟链的交易信息</a></li>
+<li><a class="reference internal" href="#hashtx">通过交易hash获取联盟链的tx执行结果</a></li>
+<li><a class="reference internal" href="#id18">获取联盟链已注册合约列表</a></li>
+<li><a class="reference internal" href="#id19">获取联盟链账户余额</a></li>
+<li><a class="reference internal" href="#nonce">获取Nonce</a></li>
+<li><a class="reference internal" href="#id20">获取联盟链详细信息</a></li>
+<li><a class="reference internal" href="#id21">调用联盟链合约</a></li>
+<li><a class="reference internal" href="#id22">调用墨珩联盟链合约</a></li>
+<li><a class="reference internal" href="#data">获取交易Data</a></li>
+<li><a class="reference internal" href="#id23">联盟链加签交易</a></li>
+<li><a class="reference internal" href="#id24">加签交易（转账）</a></li>
+<li><a class="reference internal" href="#id25">获取本地加签交易</a></li>
+<li><a class="reference internal" href="#id26">发送已加签好的交易</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="Rpc.html"
+                        title="上一章">联盟链RPC介绍</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="Api.html"
+                        title="下一章">Restful API 简介</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/supersolid/Interface/Sdk.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sdk">
+<h1>联盟链SDK介绍<a class="headerlink" href="#sdk" title="永久链接至标题">¶</a></h1>
+<p>SDK是作为专为客户端使用的软件开发包，极大方便了开发人员在客户端直接调用区块链相关接口。当前SDK可提供nodejs版本。SDK可同时连接 <a class="reference internal" href="../Definitions.html"><span class="doc">SSN</span></a> 和SSB。</p>
+<p>另外两种 <a class="reference internal" href="Console.html"><span class="doc">Console</span></a> 和 <a class="reference internal" href="Rpc.html"><span class="doc">RPC</span></a> 的开发模式，将在本章其他节介绍。</p>
+<p>SDK的1.0.8及其之后的版本已支持国密加密算法和国际加密算法两个版本，以下接口中会对两种算法分别进行详述，若接口中没区分两种算法，则两种算法使用方式一致，注意交易时的钱包地址和钱包私钥区分是否国密版本，如使用国密算法的交易，请使用国密注册账户的钱包地址和钱包私钥。</p>
+<div class="section" id="id1">
+<h2>SDK的安装<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>可使用如下命令安装联盟链nodejs版本的SDK</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="nb">super</span><span class="o">-</span><span class="n">solid</span><span class="o">-</span><span class="n">link</span>
+</pre></div>
+</div>
+<p><br/></p>
+</div>
+<div class="section" id="nodejssdk">
+<h2>nodejs版SDK详述<a class="headerlink" href="#nodejssdk" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>异常处理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>通常，采用如下方式进行异常的捕获</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ssb</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ssb</span><span class="p">;</span>
+
+<span class="k">try</span><span class="p">{</span>
+        <span class="n">var</span> <span class="n">ssbobj</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ssb</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:8545&quot;</span><span class="p">);</span>
+        <span class="n">var</span> <span class="n">blockNumber</span> <span class="o">=</span> <span class="n">ssbobj</span><span class="o">.</span><span class="n">getBlockNumber</span><span class="p">();</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">blockNumber</span><span class="p">);</span>
+<span class="p">}</span><span class="n">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">){</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>账户注册<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id4">
+<h4>国际加密算法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pwd：账户密码
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">account</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">wallet</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">pwd</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallet：
+{ address: &#39;账户地址....&#39;,
+  privateKey: &#39;私钥....&#39;,
+  keyStore: &#39;keyStore内容...&#39;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4>国密加密算法<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pwd：账户密码
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">account</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">wallet</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">registerSM</span><span class="p">(</span><span class="n">pwd</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallet：
+{ address: &#39;账户地址....&#39;,
+  privateKey: &#39;私钥....&#39;,
+  keyStore: &#39;keyStore内容...&#39;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>账户登录<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id7">
+<h4>国际加密算法<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>addr：账户地址
+pwd：账户密码
+keyStore：keyStore字符串
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">account</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">keyStore</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>privateKey： 账户私钥
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>国密加密算法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>addr：国密账户地址
+pwd：国密账户密码
+keyStore：国密keyStore字符串
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">account</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">loginSM</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">keyStore</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>privateKey： 账户私钥
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ssb">
+<h2>SSB模块接口<a class="headerlink" href="#ssb" title="永久链接至标题">¶</a></h2>
+<p><strong>SSB只介绍部署时需要用到的接口</strong></p>
+<div class="section" id="id9">
+<h3>实例化SSB对象<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>在使用接口前，需要打开一个节点的 <a class="reference internal" href="Rpc.html"><span class="doc">RPC</span></a> 并允许外部访问。</p>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssbAddress：基础链访问地址 http://127.0.0.1:8545
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ssb</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ssb</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">ssbobj</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ssb</span><span class="p">(</span><span class="n">ssbAddress</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>获取基础链区块高度<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">blockNumber</span> <span class="o">=</span> <span class="n">ssbobj</span><span class="o">.</span><span class="n">getBlockNumber</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>blockNumber：基础链区块高度
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ssn">
+<h2>SSN模块接口<a class="headerlink" href="#ssn" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>实例化ssn对象<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id12">
+<h4>国际加密算法<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssnAddress：ssn访问地址 //http://127.0.0.1:8546
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ssn</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ssn</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">ssnobj</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ssn</span><span class="p">(</span><span class="n">ssnAddress</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h4>国密加密算法<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ssnAddress：ssn访问地址 //http://127.0.0.1:8546
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ssn</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s2">&quot;super-solid-link&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ssn</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">ssnobj</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ssn</span><span class="p">(</span><span class="n">ssnAddress</span><span class="p">,</span><span class="s2">&quot;sm&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ssnid">
+<h3>获取联盟链ssnId<a class="headerlink" href="#ssnid" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getSsnId</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">sscId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sscId</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sscId：联盟链ssnId
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>获取下次续费块高度<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getBlockThreshold</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data.Current：当前块高度
+    data.Threshold：下次续费块高度
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>获取联盟链区块高度<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getBlockNumber</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">blockNumber</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">blockNumber</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>blockNumber：联盟链区块高度
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>获取某一区间内的多个区块信息<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>start：开始高度
+end：结束高度
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getBlockList</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">blockListInfo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">blockListInfo</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>blockListInfo：区块信息List
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>获取联盟链某一区块信息<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>blockNumber：区块高度
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getBlock</span><span class="p">(</span><span class="n">blockNumber</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">blockInfo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">blockInfo</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>blockInfo：某一区块信息
+</pre></div>
+</div>
+</div>
+<div class="section" id="hash">
+<h3>通过交易HASH获取联盟链的交易信息<a class="headerlink" href="#hash" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transactionHash：交易hash
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getTransactionByHash</span><span class="p">(</span><span class="n">transactionHash</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">transactionInfo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">transactionInfo</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transactionInfo：交易详情
+</pre></div>
+</div>
+</div>
+<div class="section" id="hashtx">
+<h3>通过交易hash获取联盟链的tx执行结果<a class="headerlink" href="#hashtx" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transactionHash：交易hash
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getTransactionReceiptByHash</span><span class="p">(</span><span class="n">transactionHash</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>result：执行结果
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>获取联盟链已注册合约列表<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getContractAddrList</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>result：合约列表
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>获取联盟链账户余额<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>addr：账户地址
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getBalance</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">balance</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">balance</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data：联盟链账户余额（erc20最小单位）
+</pre></div>
+</div>
+</div>
+<div class="section" id="nonce">
+<h3>获取Nonce<a class="headerlink" href="#nonce" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>addr：账户钱包地址
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getNonce</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">nonce</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">nonce</span><span class="p">);</span>
+<span class="p">});;</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>nonce：得到的nonce
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>获取联盟链详细信息<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getAppChainInfo</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">appChainInfo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">appChainInfo</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>appChainInfo：联盟链信息
+</pre></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>调用联盟链合约<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>contractAddress：dapp合约地址
+param：例如合约中存在一个无参的方法getDechatInfo，则传入[&quot;getDechatInfo&quot;];
+         存在一个有参的方法getTopicList(uint pageNum, uint pageSize), 则传入[&quot;getTopicList&quot;, 0, 20]
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">callContract</span><span class="p">(</span><span class="n">contractAddress</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data：调用合约返回信息
+</pre></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>调用墨珩联盟链合约<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>contractAddress: dapp合约地址
+FuncName: 例如合约中存在一个方法名，如issue;
+method: 方法，例如issue(address,uint256)
+paramTypes: 参数类型数组 [&#39;address&#39;,&#39;uint256&#39;]
+paramValues: 参数值数组 [&#39;0x.....&#39;,10000]
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">mhCallContract</span><span class="p">(</span><span class="n">contractAddress</span><span class="p">,</span> <span class="n">FuncName</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">paramTypes</span><span class="p">,</span> <span class="n">paramValues</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data：调用合约返回信息
+</pre></div>
+</div>
+</div>
+<div class="section" id="data">
+<h3>获取交易Data<a class="headerlink" href="#data" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>method：方法 例 &quot;issue(address,uint256)&quot;
+paramTypes：paramTypes 参数类型数组 例[&#39;address&#39;,&#39;uint256&#39;]
+paramValues：paramValues 参数值数组 例[&#39;0x.....&#39;,10000]（如需要传金额的入参为erc20最小单位）
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">ssnobj</span><span class="o">.</span><span class="n">getData</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="n">paramTypes</span><span class="p">,</span><span class="n">paramValues</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data：data字符串
+</pre></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3>联盟链加签交易<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from：发送方的钱包地址
+contractAddress：联盟链合约地址
+amount：交易金额
+method：方法 例 &quot;issue(address,uint256)&quot;
+paramTypes：paramTypes 参数类型数组 例[&#39;address&#39;,&#39;uint256&#39;]
+paramValues：paramValues 参数值数组 例[&#39;0x.....&#39;,10000]（如需要传金额的入参为erc20最小单位）
+privateKey：发送方钱包私钥
+nonce：发送方账户nonce(非必填)
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">contractAddress</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">paramTypes</span><span class="p">,</span> <span class="n">paramValues</span><span class="p">,</span> <span class="n">privateKey</span><span class="p">,</span> <span class="n">nonce</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="nb">hash</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">hash</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hash：交易hash
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3>加签交易（转账）<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from：交易发起人
+to：交易接收人
+amount：交易金额
+strData：交易备注
+privateKey：交易发起人私钥
+nonce：发起人账户nonce(非必填)
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">sendRawTransactionPrivate</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">strData</span><span class="p">,</span> <span class="n">privateKey</span><span class="p">,</span> <span class="n">nonce</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="nb">hash</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hash：交易hash
+</pre></div>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>获取本地加签交易<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from：发送方的钱包地址
+contractAddress：联盟链合约地址
+amount：交易金额
+method：方法 例 &quot;issue(address,uint256)&quot;
+paramTypes：paramTypes 参数类型数组 例[&#39;address&#39;,&#39;uint256&#39;]
+paramValues：paramValues 参数值数组 例[&#39;0x.....&#39;,10000]（如需要传金额的入参为erc20最小单位）
+privateKey：发送方钱包私钥
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">getSignedTx</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="n">contractAddress</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">paramTypes</span><span class="p">,</span> <span class="n">paramValues</span><span class="p">,</span> <span class="n">privateKey</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="n">signedTx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">signedTx</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>signedTx：交易加签后交易体
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>发送已加签好的交易<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>signTx：交易加签后交易体
+</pre></div>
+</div>
+<p>代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssnobj</span><span class="o">.</span><span class="n">sendSignTransaction</span><span class="p">(</span><span class="n">signTx</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">((</span><span class="nb">hash</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">hash</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>返回:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hash：交易hash
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Api.html" title="Restful API 简介"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Rpc.html" title="联盟链RPC介绍"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

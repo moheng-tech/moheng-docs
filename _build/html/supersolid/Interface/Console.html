@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>联盟链命令行介绍 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="联盟链RPC介绍" href="Rpc.html" />
+    <link rel="prev" title="联盟链中间件平台" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Rpc.html" title="联盟链RPC介绍"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="联盟链中间件平台"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">联盟链命令行介绍</a><ul>
+<li><a class="reference internal" href="#console">启动Console的方式</a></li>
+<li><a class="reference internal" href="#ssn-console">SSN console命令汇总</a><ul>
+<li><a class="reference internal" href="#mh">mh</a></li>
+<li><a class="reference internal" href="#txpool">txpool</a></li>
+<li><a class="reference internal" href="#debug">debug</a></li>
+<li><a class="reference internal" href="#personal">personal</a></li>
+<li><a class="reference internal" href="#id2">其他</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="index.html"
+                        title="上一章">联盟链中间件平台</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="Rpc.html"
+                        title="下一章">联盟链RPC介绍</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/supersolid/Interface/Console.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>联盟链命令行介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>Console是指联盟链开发中的命令行模式，用于开发人员直接通过命令行方式对链上的数据进行调试。当前 <a class="reference internal" href="../Definitions.html"><span class="doc">SSN</span></a> 和SSB都有命令行模式。命令行模式适用于联盟链部署和debug链上数据，适合开发人员使用。</p>
+<p>另外两种 <a class="reference internal" href="Sdk.html"><span class="doc">SDK</span></a> 和 <a class="reference internal" href="Rpc.html"><span class="doc">RPC</span></a> 的开发模式，将在本章其他节介绍。</p>
+<div class="section" id="console">
+<h2>启动Console的方式<a class="headerlink" href="#console" title="永久链接至标题">¶</a></h2>
+<p><br/>
+<br/></p>
+<p><strong>启动SSB console的方式</strong></p>
+<p><strong>前提：</strong> 已经启动SSB
+然后在同一台服务器中输入</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="o">-</span><span class="n">solid</span><span class="o">-</span><span class="n">base</span> <span class="n">attach</span>
+</pre></div>
+</div>
+<p><strong>启动SSN console的方式</strong></p>
+<p><strong>前提：</strong> 已经启动SSN
+然后在同一台服务器中输入</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="o">-</span><span class="n">solid</span><span class="o">-</span><span class="n">node</span> <span class="n">attach</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssn-console">
+<h2>SSN console命令汇总<a class="headerlink" href="#ssn-console" title="永久链接至标题">¶</a></h2>
+<p>联盟链主要是在SSN上进行命令行调试，以下是当前常用的命令行范例。</p>
+<p>本节将按照前缀进行分类。</p>
+<div class="section" id="mh">
+<h3>mh<a class="headerlink" href="#mh" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="#getssnid">getSSNId</a>： 获取SSN节点id</p>
+<p><a class="reference internal" href="#sendrawtransaction">sendRawTransaction</a>: 发送已加签好的交易</p>
+<p><a class="reference internal" href="#accounts">accounts</a>：获取SSN节点已创建地址列表</p>
+<p><a class="reference internal" href="#sign">sign</a>：以特殊前缀加签</p>
+<p><a class="reference internal" href="#signtransaction">signTransaction</a>：交易加签</p>
+<p><a class="reference internal" href="#sendtransaction">sendTransaction</a>：以未加签方式发送交易</p>
+<p><a class="reference internal" href="#anycall">anyCall</a>：调用联盟链已部署合约方法，如何部署联盟链合约，请参见</p>
+<p><a class="reference internal" href="#getbalance">getBalance</a>：获取联盟链账号余额</p>
+<p><a class="reference internal" href="#getblock">getBlock</a>：获取联盟链某一区块信息</p>
+<p><a class="reference internal" href="#getblocklist">getBlockList</a>：获取联盟链某段区块信息</p>
+<p><a class="reference internal" href="#getblocknumber">getBlockNumber</a>：获取联盟链区块高度</p>
+<p><a class="reference internal" href="#getcontractaddrlist">getContractAddrList</a>：获取联盟链已注册合约列表</p>
+<p><a class="reference internal" href="#getnonce">getNonce</a>：获得对应账号在联盟链中的Nonce</p>
+<p><a class="reference internal" href="#getreceiptbyhash">getReceiptByHash</a>：通过交易hash获取联盟链的tx执行结果</p>
+<p><a class="reference internal" href="#getreceiptbynonce">getReceiptByNonce</a>：通过账号和Nonce获取联盟链的tx执行结果</p>
+<p><a class="reference internal" href="#gettransactionbyhash">getTransactionByHash</a>：通过交易HASH获取联盟链的交易信息</p>
+<p><a class="reference internal" href="#gettransactionbynonce">getTransactionByNonce</a>：通过账号和Nonce获取联盟链的交易信息</p>
+<p><a class="reference internal" href="#syncing">syncing</a>：获取联盟链节点同步信息</p>
+<p><a class="reference internal" href="#getblockthreshold">getBlockThreshold</a>：获取联盟链下次续费块高度</p>
+<p><br/>
+<br/></p>
+<table class="docutils field-list" frame="void" id="getssnid" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getSSNId</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取SSN节点id</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body">无</td>
+</tr>
+</tbody>
+</table>
+<p>:返回：</p>
+<ul class="simple">
+<li>SSN 地址</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getSSNId</span><span class="p">()</span>
+
+<span class="s2">&quot;0x76449055dc3cf91090c11f7c544b60363bf896cb&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="sendrawtransaction" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.sendRawTransaction</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">发送已加签好的交易</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>加签交易数据</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>交易hash</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="s2">&quot;0xf86a33808504a817c8008094a......3364503ba2b67599ab218117b3182a30&quot;</span><span class="p">)</span>
+
+<span class="s2">&quot;0xa629303563c97821fca......7e2963cb06692704d84fbc05946e5576a5&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="accounts" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.accounts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取SSN节点已创建地址列表</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body">无</td>
+</tr>
+</tbody>
+</table>
+<p>:返回：</p>
+<ul class="simple">
+<li>SSN 地址列表集</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">accounts</span>
+
+<span class="p">[</span><span class="s2">&quot;0x76449055dc3cf9109.......c544b60363bf896cb&quot;</span><span class="p">,</span> <span class="s2">&quot;0x9441c6707a1......119f27497c8227d&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="sign" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.sign</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>以特定前缀签名,通过向消息添加前缀，可以将计算得到的签名识别为moheng特定的签名。这可以防止恶意的DApp对任意数据(如事务)进行签名，并使用签名冒充受害者。注意要签名的地址必须解锁。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>加签账号地址</li>
+<li>加签明文数据</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>签名结果</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="s2">&quot;0x69f3d468cbec......b203668518dcd18d11b16&quot;</span><span class="p">,</span> <span class="s2">&quot;0x53220b11be2c92dbb4......73f93eb95385e92a9ed29bf9d07d79f534b&quot;</span><span class="p">)</span>
+
+<span class="s2">&quot;0x8f647ae2563179eed1ceed810300......1784ba8675794a17639e5ae6b52f88d1b&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="signtransaction" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.signTransaction</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">对交易进行加签，注意要签名的地址必须解锁。</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>from：交易发送账号地址，也是交易加签地址</li>
+<li>to：交易指向的账号地址，部署合约交易不填写</li>
+<li>value：交易转出的货币数量，</li>
+<li>data：加签数据</li>
+<li>nonce ：交易nonce ，可不填</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>raw: 交易加签结果</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">signTransaction</span><span class="p">({</span><span class="n">from</span><span class="p">:</span><span class="n">mh</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;0xaa4c98c7efb24......b437cd761df4e648c&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="s1">&#39;0x5f484e5a&#39;</span><span class="p">})</span>
+
+<span class="p">{</span>
+    <span class="n">raw</span><span class="p">:</span> <span class="s2">&quot;0xf8658080808094aa4c98c7efb2......5b7b2a7b6d3e37b29e5eb548aa073e0436ca1318f7f9&quot;</span><span class="p">,</span>
+    <span class="n">tx</span><span class="p">:</span> <span class="p">{</span>
+        <span class="o">......</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="sendtransaction" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.sendTransaction</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">发送未加签的交易，注意要签名的地址必须解锁。</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>from：交易发送账号地址，也是交易加签地址</li>
+<li>to：交易指向的账号地址，部署合约交易不填写</li>
+<li>value：交易转出的货币数量，</li>
+<li>data：交易数据</li>
+<li>nonce ：交易nonce ，可不填</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>交易hash</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">sendTransaction</span><span class="p">({</span><span class="n">from</span><span class="p">:</span><span class="n">mh</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;0xaa4c98c7efb244f4......7cd761df4e648c&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="s1">&#39;0x0&#39;</span><span class="p">})</span>
+
+ <span class="s2">&quot;0x06e6153b5878420cedb3850fe3b486......add715edfa24b606b6355b802&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="anycall" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.anyCall</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取SSN合约函数的返回值，调用此接口前必须将合约注册入dappbase</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Sender：查询账号</li>
+<li>DappAddr:联盟链业务逻辑地址</li>
+<li>Params： 第一个参数是调用的方法，之后是方法传入参数</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>函数返回值</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">anyCall</span><span class="p">({</span><span class="n">Sender</span><span class="p">:</span> <span class="s2">&quot;0xc2a0423fac6d......bd8560288edc94c00ee&quot;</span><span class="p">,</span> <span class="n">DappAddr</span><span class="p">:</span><span class="s2">&quot;0xe5d7da7a37......4c43a7e16575f18e4b746&quot;</span><span class="p">,</span> <span class="n">Params</span><span class="p">:[</span><span class="s1">&#39;getCurNodeList&#39;</span><span class="p">]})</span>
+
+ <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">nodeList</span><span class="se">\&quot;</span><span class="s2">:[</span><span class="se">\&quot;</span><span class="s2">0x76449055dc3cf......b60363bf896cb</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">0xc2a0423fac6d1ae......0288edc94c00ee</span><span class="se">\&quot;</span><span class="s2">]}&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getbalance" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getBalance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得对应账号在联盟链中的货币余额。</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>账号地址</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>账号余额，精度18</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getBalance</span><span class="p">(</span><span class="s1">&#39;0xf180041c895a6aa......277cea3e20c2cbe&#39;</span><span class="p">)</span>
+
+  <span class="mi">11000000000000000000</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getblock" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getBlock</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得联盟链某一区块信息。</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>块号</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getBlock</span><span class="p">(</span><span class="mi">37</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="n">extraData</span><span class="p">:</span> <span class="s2">&quot;0xa77c68b8d817377d61c23bcea32c57eab4db5......256ff80301401c1d7423d512504cc588ab68dd36f90fcd1642b1dfb0a79564f44432311a5fd00ef252dbe79d002929aa42ddaf1650a7b8f18c59edfaa9189d025923f1617a510209313538323638373437034062e8e2de7b1d5af97dc66e51fc93102ebdb5768431e36f65d8ff02af61c7016ba97b07d36cbd22d0ce8da0d7c0c8a13aa6d9fd42ab274d588610442a62d2b00e&quot;</span><span class="p">,</span>
+  <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0xfe8f215cb8b70d43d50c185......de2914c443ac064d436807e39a7&quot;</span><span class="p">,</span>
+  <span class="n">miner</span><span class="p">:</span> <span class="s2">&quot;0xc2a0423fac6d......bd8560288edc94c00ee&quot;</span><span class="p">,</span>
+  <span class="n">number</span><span class="p">:</span> <span class="s2">&quot;0x25&quot;</span><span class="p">,</span>
+  <span class="n">parentHash</span><span class="p">:</span> <span class="s2">&quot;0xc881942213......f9598798343f0a1793006eab6ce84272da5428ce&quot;</span><span class="p">,</span>
+  <span class="n">receiptsRoot</span><span class="p">:</span> <span class="s2">&quot;0xa07cd7906ea8b......aa57a7cd068c6f2acd7a165cf599537022b9d8fc4&quot;</span><span class="p">,</span>
+  <span class="n">stateRoot</span><span class="p">:</span> <span class="s2">&quot;0xd6f76d1619ae985d......d7c530569d864323d16d248b8cd3f4581e40e&quot;</span><span class="p">,</span>
+  <span class="n">timestamp</span><span class="p">:</span> <span class="s2">&quot;0x5e55e4ee&quot;</span><span class="p">,</span>
+  <span class="n">transactions</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0x36249ce5e68.......19c5d3f4e7e63d805416d5c038a611b111cd9a43a9&quot;</span><span class="p">,</span> <span class="s2">&quot;0xaaf14ac0152fb12f71cce01fb8.......0c5fc4d0cbb27cc64f3f78b2720bca6b&quot;</span><span class="p">],</span>
+  <span class="n">transactionsRoot</span><span class="p">:</span> <span class="s2">&quot;0xb7ece0cd0fcc......23062dc25fc66529fa5093ae30859f91a11298676bc0f0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getblocklist" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getBlockList</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取联盟链某一区间内的区块信息。</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">输入参数:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>起始块号</li>
+<li>结束块号</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getBlockList</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">blockList</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="n">extraData</span><span class="p">:</span> <span class="s2">&quot;0xf0c9626d45789730f1fcb773907f6bae0d4......1180f4c39f7fd3daf67ee61d79f8e239c3b14ed160f8a606&quot;</span><span class="p">,</span>
+      <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0xc881942213aad1bad5403c47f95......93006eab6ce84272da5428ce&quot;</span><span class="p">,</span>
+      <span class="n">miner</span><span class="p">:</span> <span class="s2">&quot;0xc2a0423fac6d1aee9......8560288edc94c00ee&quot;</span><span class="p">,</span>
+      <span class="n">number</span><span class="p">:</span> <span class="s2">&quot;0x24&quot;</span><span class="p">,</span>
+      <span class="n">parentHash</span><span class="p">:</span> <span class="s2">&quot;0xc5dd98df039f1d5......1c197b666c1db038da2f225bd8a9772de966d4&quot;</span><span class="p">,</span>
+      <span class="n">receiptsRoot</span><span class="p">:</span> <span class="s2">&quot;0x56e81f171bcc55a6......2c0f86e5b48e01b996cadc001622fb5e363b421&quot;</span><span class="p">,</span>
+      <span class="n">stateRoot</span><span class="p">:</span> <span class="s2">&quot;0x90766f90ee1d7dfc029......4cfcb94d6f370b78ff522b3066235325&quot;</span><span class="p">,</span>
+      <span class="n">timestamp</span><span class="p">:</span> <span class="s2">&quot;0x5e55e4e4&quot;</span><span class="p">,</span>
+      <span class="n">transactions</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="n">transactionsRoot</span><span class="p">:</span> <span class="s2">&quot;0x56e81f171bcc55a......f86e5b48e01b996cadc001622fb5e363b421&quot;</span>
+  <span class="p">},</span> <span class="p">{</span>
+      <span class="n">extraData</span><span class="p">:</span> <span class="s2">&quot;0xa77c68b8d817377d61c23.......442a62d2b00e&quot;</span><span class="p">,</span>
+      <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0xfe8f215cb8b70d43d50c185fb0b7......5de2914c443ac064d436807e39a7&quot;</span><span class="p">,</span>
+      <span class="n">miner</span><span class="p">:</span> <span class="s2">&quot;0xc2a0423fac6d1aee......d8560288edc94c00ee&quot;</span><span class="p">,</span>
+      <span class="n">number</span><span class="p">:</span> <span class="s2">&quot;0x25&quot;</span><span class="p">,</span>
+      <span class="n">parentHash</span><span class="p">:</span> <span class="s2">&quot;0xc881942213aa......9598798343f0a1793006eab6ce84272da5428ce&quot;</span><span class="p">,</span>
+      <span class="n">receiptsRoot</span><span class="p">:</span> <span class="s2">&quot;0xa07cd7906ea8b......a57a7cd068c6f2acd7a165cf599537022b9d8fc4&quot;</span><span class="p">,</span>
+      <span class="n">stateRoot</span><span class="p">:</span> <span class="s2">&quot;0xd6f76d1619ae985......583dd7c530569d864323d16d248b8cd3f4581e40e&quot;</span><span class="p">,</span>
+      <span class="n">timestamp</span><span class="p">:</span> <span class="s2">&quot;0x5e55e4ee&quot;</span><span class="p">,</span>
+      <span class="n">transactions</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0x36249ce5e68......719c5d3f4e7e63d805416d5c038a611b111cd9a43a9&quot;</span><span class="p">,</span> <span class="s2">&quot;0xaaf14ac0152fb12f71cce01fb8e244cc......d0cbb27cc64f3f78b2720bca6b&quot;</span><span class="p">],</span>
+      <span class="n">transactionsRoot</span><span class="p">:</span> <span class="s2">&quot;0xb7ece0cd0fcc52......62dc25fc66529fa5093ae30859f91a11298676bc0f0&quot;</span>
+  <span class="p">}],</span>
+  <span class="n">endBlk</span><span class="p">:</span> <span class="s2">&quot;0x25&quot;</span><span class="p">,</span>
+  <span class="n">startBlk</span><span class="p">:</span> <span class="s2">&quot;0x24&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getblocknumber" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getBlockNumber</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得当前联盟链的区块高度。</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：当前区块高度</p>
+<p>示例:
+::
+&gt; mh.getBlockNumber()</p>
+<p>2245</p>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getcontractaddrlist" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getContractAddrList</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取联盟链内所有已注册合约的地址列表，需要已部署的合约在dappbase中调用registerDapp方法后才能生效，具体方法请参见</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：合约地址列表，第一个是dappbase地址，之后是已注册合约地址</p>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getContractAddrList</span><span class="p">()</span>
+
+<span class="p">[</span><span class="s2">&quot;0xe5d7da7a3746......7e16575f18e4b746&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getnonce" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getNonce</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得对应账号在联盟链中的Nonce，这是调用联盟链DAPP合约的必要参数之一，每当联盟链交易发送后会自动加1</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>账号地址</li>
+</ul>
+<p>:返回：该账号Nonce</p>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getNonce</span><span class="p">(</span><span class="s1">&#39;0xf180041c895......277cea3e20c2cbe&#39;</span><span class="p">)</span>
+
+<span class="mi">1</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getreceiptbyhash" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getReceiptByHash</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">通过交易hash获取联盟链的tx执行结果</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>账号地址</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getReceiptByHash</span><span class="p">(</span><span class="s1">&#39;0x9cf04d4f00998ba09c2c6......85b173a406baedde414f08d88df5c992034&#39;</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">contractAddress</span><span class="p">:</span> <span class="s2">&quot;0x000000000000......000000000000000000&quot;</span><span class="p">,</span>
+  <span class="n">failed</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">logs</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="n">logsBloom</span><span class="p">:</span> <span class="s2">&quot;0x00000000000000000......00000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+  <span class="n">queryInBlock</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">result</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="n">transactionHash</span><span class="p">:</span> <span class="s2">&quot;0x9cf04d4f00998ba09c2c6......73a406baedde414f08d88df5c992034&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getreceiptbynonce" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getReceiptByNonce</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">通过账号和Nonce获取联盟链的tx执行结果</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>账号地址</li>
+<li>Nonce</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getReceiptByNonce</span><span class="p">(</span><span class="s1">&#39;0xf180041c895a6aA8b2......0A277cEA3e20C2CBE&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">contractAddress</span><span class="p">:</span> <span class="s2">&quot;0x000000000000000......0000000000000000&quot;</span><span class="p">,</span>
+  <span class="n">failed</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="n">logs</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="n">logsBloom</span><span class="p">:</span> <span class="s2">&quot;0x000000000000000.......00000000000000000&quot;</span><span class="p">,</span>
+  <span class="n">queryInBlock</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">result</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="n">transactionHash</span><span class="p">:</span> <span class="s2">&quot;0x9cf04d4f00998ba0.......85b173a406baedde414f08d88df5c992034&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="gettransactionbyhash" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getTransactionByHash</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">通过交易HASH获取联盟链的交易信息</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>交易哈希</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getTransactionByHash</span><span class="p">(</span><span class="s1">&#39;0x9cf04d4f00998ba09c......06baedde414f08d88df5c992034&#39;</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">blockHash</span><span class="p">:</span> <span class="s2">&quot;0xdaf05facc57d218528e6c......51eeed54a9fae9e8be4353c23c58ec6&quot;</span><span class="p">,</span>
+  <span class="n">blockNumber</span><span class="p">:</span> <span class="s2">&quot;0x910&quot;</span><span class="p">,</span>
+  <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;0xf180041c895a6aa8b2......a277cea3e20c2cbe&quot;</span><span class="p">,</span>
+  <span class="n">gas</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="n">gasPrice</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0x9cf04d4f00998ba09c......5b173a406baedde414f08d88df5c992034&quot;</span><span class="p">,</span>
+  <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;0x3876c45f5b6f81......cf5ebcb075e400a571e&quot;</span><span class="p">,</span>
+  <span class="n">nonce</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+  <span class="n">r</span><span class="p">:</span> <span class="s2">&quot;0x5c1aeea440bdf02cdf646......5ed29d42a41c59b299262ffb23a4a5e7&quot;</span><span class="p">,</span>
+  <span class="n">s</span><span class="p">:</span> <span class="s2">&quot;0x7dac198898963a33a69af......aab94328c0c03215467032055eb2f26b716d&quot;</span><span class="p">,</span>
+  <span class="n">shardingFlag</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+  <span class="n">syscnt</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+  <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;0xaa4c98c7efb24......bb437cd761df4e648c&quot;</span><span class="p">,</span>
+  <span class="n">transactionIndex</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+  <span class="n">v</span><span class="p">:</span> <span class="s2">&quot;0xf0&quot;</span><span class="p">,</span>
+  <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;0xde0b6b3a7640000&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="gettransactionbynonce" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getTransactionByNonce</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">通过账号和Nonce获取联盟链的交易信息</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>账号地址</li>
+<li>Nonce</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getTransactionByNonce</span><span class="p">(</span><span class="s1">&#39;0xf180041c895a6aA......20C2CBE&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">blockHash</span><span class="p">:</span> <span class="s2">&quot;0xdaf05facc57d218528e6c73df......4a9fae9e8be4353c23c58ec6&quot;</span><span class="p">,</span>
+  <span class="n">blockNumber</span><span class="p">:</span> <span class="s2">&quot;0x910&quot;</span><span class="p">,</span>
+  <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;0xf180041c895a......500a277cea3e20c2cbe&quot;</span><span class="p">,</span>
+  <span class="n">gas</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="n">gasPrice</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0x9cf04d4f00998ba0......4fd85b173a406baedde414f08d88df5c992034&quot;</span><span class="p">,</span>
+  <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;0x3876c45f5b6f81......cf5ebcb075e400a571e&quot;</span><span class="p">,</span>
+  <span class="n">nonce</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+  <span class="n">r</span><span class="p">:</span> <span class="s2">&quot;0x5c1aeea440bdf02cdf6.......3c5ed29d42a41c59b299262ffb23a4a5e7&quot;</span><span class="p">,</span>
+  <span class="n">s</span><span class="p">:</span> <span class="s2">&quot;0x7dac198898963a33a69af......b94328c0c03215467032055eb2f26b716d&quot;</span><span class="p">,</span>
+  <span class="n">shardingFlag</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+  <span class="n">syscnt</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+  <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;0xaa4c98c7efb24......b437cd761df4e648c&quot;</span><span class="p">,</span>
+  <span class="n">transactionIndex</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+  <span class="n">v</span><span class="p">:</span> <span class="s2">&quot;0xf0&quot;</span><span class="p">,</span>
+  <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;0xde0b6b3a7640000&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="syncing" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.syncing</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取联盟链节点同步信息</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：</p>
+<ul class="simple">
+<li>开始块</li>
+<li>当前块</li>
+<li>最高块</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">syncing</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">startingBlock</span><span class="p">:</span> <span class="s1">&#39;0x384&#39;</span><span class="p">,</span>
+    <span class="n">currentBlock</span><span class="p">:</span> <span class="s1">&#39;0x386&#39;</span><span class="p">,</span>
+    <span class="n">highestBlock</span><span class="p">:</span> <span class="s1">&#39;0x454&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="getblockthreshold" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#mh">mh</a>.getBlockThreshold</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取联盟链下次续费块高度</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：</p>
+<ul class="simple">
+<li>当前块号</li>
+<li>下次续费高度</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mh</span><span class="o">.</span><span class="n">getBlockThreshold</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Current</span><span class="p">:</span> <span class="mi">312</span><span class="p">,</span><span class="o">//</span><span class="n">当前块号</span>
+  <span class="n">Threshold</span><span class="p">:</span> <span class="mi">200000</span><span class="o">//</span><span class="n">下次续费块高度</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><br/>
+<br/></p>
+</div>
+<div class="section" id="txpool">
+<h3>txpool<a class="headerlink" href="#txpool" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="#content">content</a>： 获得联盟链交易池交易的详细信息</p>
+<p><a class="reference internal" href="#inspect">inspect</a>： 获得联盟链交易池交易的简要信息</p>
+<p><a class="reference internal" href="#status">status</a>： 获得联盟链交易池交易的交易数量</p>
+<p><br/>
+<br/></p>
+<table class="docutils field-list" frame="void" id="content" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#txpool">txpool</a>.content</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得联盟链交易池交易的详细信息</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：</p>
+<ul class="simple">
+<li>pending：待打包</li>
+<li>queued：队列中</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">txpool</span><span class="o">.</span><span class="n">content</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">pending</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="n">queued</span><span class="p">:</span> <span class="p">{</span>
+    <span class="mh">0xf180041c895a6aA8b2F38500A277cEA3e20C2CBE</span><span class="p">:</span> <span class="p">{</span>
+      <span class="mi">3</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">blockHash</span><span class="p">:</span> <span class="s2">&quot;0x000000000000000000......0000000000000000000000000000000000000000&quot;</span><span class="p">,</span>
+        <span class="n">blockNumber</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="n">from</span><span class="p">:</span> <span class="s2">&quot;0xf180041c895a......38500a277cea3e20c2cbe&quot;</span><span class="p">,</span>
+        <span class="n">gas</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="n">gasPrice</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;0x58eb432ff88f7666......5d92f0a577e6e769712f1a2356fc1c25bde9110&quot;</span><span class="p">,</span>
+        <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;0x3876c45f5b6f81......5ebcb075e400a571e&quot;</span><span class="p">,</span>
+        <span class="n">nonce</span><span class="p">:</span> <span class="s2">&quot;0x3&quot;</span><span class="p">,</span>
+        <span class="n">r</span><span class="p">:</span> <span class="s2">&quot;0x3c79d4f4b1336565db6234af......2c1aee1a3107bf92e97361c0b3&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="p">:</span> <span class="s2">&quot;0x7f582d62b3e99f5dad7d34dc......37f70811aa90c645a1fdd433f349338&quot;</span><span class="p">,</span>
+        <span class="n">shardingFlag</span><span class="p">:</span> <span class="s2">&quot;0x2&quot;</span><span class="p">,</span>
+        <span class="n">syscnt</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="n">to</span><span class="p">:</span> <span class="s2">&quot;0xaa4c98c7efb244f41......7cd761df4e648c&quot;</span><span class="p">,</span>
+        <span class="n">transactionIndex</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="n">v</span><span class="p">:</span> <span class="s2">&quot;0xf0&quot;</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="inspect" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#txpool">txpool</a>.inspect</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得联盟链交易池交易的简要信息</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：</p>
+<ul class="simple">
+<li>pending：待打包</li>
+<li>queued：队列中</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">txpool</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">pending</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="n">queued</span><span class="p">:</span> <span class="p">{</span>
+    <span class="mh">0xf180041</span><span class="o">.......</span><span class="mi">00</span><span class="n">A277cEA3e20C2CBE</span><span class="p">:</span> <span class="p">{</span>
+      <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;0xAA4c98C7efb24......3bB437CD761Df4e648C: 0 sha + 0 × 20000000000 gas&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="status" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#txpool">txpool</a>.status</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获得联盟链交易池交易的交易数量</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>:返回：</p>
+<ul class="simple">
+<li>pending：待打包</li>
+<li>queued：队列中</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">txpool</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">pending</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">queued</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><br/>
+<br/></p>
+</div>
+<div class="section" id="debug">
+<h3>debug<a class="headerlink" href="#debug" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="#tracetransaction">traceTransaction</a>： 获得交易在EVM执行期间创建的结构化日志</p>
+<p><br/>
+<br/></p>
+<table class="docutils field-list" frame="void" id="tracetransaction" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#debug">debug</a>.traceTransaction</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">返回交易在EVM执行期间创建的结构化日志，并将它们作为JSON对象返回</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>交易哈希</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span><span class="n">debug</span><span class="o">.</span><span class="n">traceTransaction</span><span class="p">(</span><span class="s2">&quot;1a0da52d43d42223c......6aba732a74100f7357f0a0128340&quot;</span><span class="p">,</span> <span class="s2">&quot;callTracer&quot;</span><span class="p">)</span>
+
+<span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">CALL</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">from</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0xc2a0423fac6d1ae......bd8560288edc94c00ee</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">to</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0xe5d7da7a374663218294c43a7e16575f18e4b746</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">gas</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x337be36</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">gasUsed</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">input</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x12df94120000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000f180041c895a6aa8b2f38500a277cea3e20c2cbe00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000005e562360</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">output</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">time</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0s</span><span class="se">\&quot;</span><span class="s2">,......5a6aa8b2f38500a277cea3e20c2cbe</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0xde0b6b3a7640000</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">input</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">0x</span><span class="se">\&quot;</span><span class="s2">}]}&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><br/>
+<br/></p>
+</div>
+<div class="section" id="personal">
+<h3>personal<a class="headerlink" href="#personal" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="#newaccount">newAccount</a>： 创建新的账号</p>
+<p><a class="reference internal" href="#listaccounts">listAccounts</a>: 获取下SSN的账号列表</p>
+<p><a class="reference internal" href="#unlockaccount">unlockAccount</a>：解锁指定账号</p>
+<p><a class="reference internal" href="#lockaccount">lockAccount</a>：锁定账号</p>
+<p><a class="reference internal" href="#ecrecover">ecRecover</a>：地址验签</p>
+<p><br/>
+<br/></p>
+<table class="docutils field-list" frame="void" id="newaccount" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#personal">personal</a>.newAccount</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">创建新的账号</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>账号密码</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span><span class="n">personal</span><span class="o">.</span><span class="n">newAccount</span><span class="p">(</span><span class="s1">&#39;123456&#39;</span><span class="p">)</span>
+
+<span class="s2">&quot;0x69f3d468cbec......203668518dcd18d11b16&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="listaccounts" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#personal">personal</a>.listAccounts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">获取下SSN的账号列表</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：无</p>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">listAccounts</span>
+<span class="p">[</span><span class="s2">&quot;0x76449055dc3cf.......0363bf896cb&quot;</span><span class="p">,</span> <span class="s2">&quot;0x9441c6707a1ef......634a119f27497c8227d&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="unlockaccount" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#personal">personal</a>.unlockAccount</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">解锁指定账号</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>解锁账号地址</li>
+<li>解锁账号密码</li>
+</ul>
+<p>:输入参数：
+- 账号密码</p>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">unlockAccount</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;123456&#39;</span><span class="p">)</span>
+<span class="n">true</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="lockaccount" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#personal">personal</a>.lockAccount</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">锁定账号</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>解锁账号地址</li>
+</ul>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>账号密码</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">lockAccount</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">true</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<table class="docutils field-list" frame="void" id="ecrecover" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body"><a class="reference internal" href="#personal">personal</a>.ecRecover</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">ecRecover返回用于创建签名的帐户的地址。注意，此函数与mh.sign和personal.sign兼容。</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>加签明文数据</li>
+<li>加签密文数据</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>账户地址</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">personal</span><span class="o">.</span><span class="n">ecRecover</span><span class="p">(</span><span class="s2">&quot;0x53220b11be2c92dbb40be6159......92a9ed29bf9d07d79f534b&quot;</span><span class="p">,</span> <span class="s2">&quot;0x8f647ae2563......63a203686c0b513822a9935b2c8c51784ba8675794a17639e5ae6b52f88d1b&quot;</span><span class="p">)</span>
+
+   <span class="s2">&quot;0x69f3d468cbec148984a......518dcd18d11b16&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>其他<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">接口:</th><td class="field-body">loadScript</td>
+</tr>
+<tr class="field-even field"><th class="field-name">描述:</th><td class="field-body">加载并运行js脚本文件</td>
+</tr>
+</tbody>
+</table>
+<p>:输入参数：</p>
+<ul class="simple">
+<li>脚本文件位置（绝对路径）</li>
+</ul>
+<p>:返回：</p>
+<ul class="simple">
+<li>是否正常加载</li>
+</ul>
+<p>示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">loadScript</span><span class="p">(</span><span class="s1">&#39;path</span><span class="se">\t</span><span class="s1">o\load.js&#39;</span><span class="p">)</span>
+   <span class="n">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Rpc.html" title="联盟链RPC介绍"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="联盟链中间件平台"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >联盟链中间件平台</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>平台介绍 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">平台介绍</a><ul>
+<li><a class="reference internal" href="#id2">什么是墨珩超零界系统</a></li>
+<li><a class="reference internal" href="#id3">超零界系统业务逻辑简介</a></li>
+<li><a class="reference internal" href="#id4">章节构成简介</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/superbound/Introduction.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>平台介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>什么是墨珩超零界系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>墨珩超零界系统(Super-Bound)，以下简称超零界系统，是墨珩网络科技有限公司自主研发的溯源存证平台，利用cTree快速存取模块，实现链上链下协同存证溯源。具有存验隔离、数据分片、海量存储、双重校对等特点。</p>
+<p>当前，超零界系统需要和  <a class="reference internal" href="../supersolid/Supersolid/index.html"><span class="doc">联盟链</span></a> 配合使用，从而实现链上链下的数据交互。</p>
+</div>
+<div class="section" id="id3">
+<h2>超零界系统业务逻辑简介<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>超零界系统的存证溯源主要由如下几个模块：</p>
+<ul>
+<li><p class="first">生成N个标签。N原则上小于等于一百万，初始化标签（时间较长）</p>
+</li>
+<li><p class="first">二次开发</p>
+<blockquote>
+<div><ul class="simple">
+<li>访问判定</li>
+<li>锁定标签，存证，解锁标签</li>
+<li>标签上链（自动）</li>
+<li>验证标签</li>
+<li>申诉标签</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>章节构成简介<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>本章主要由超零界系统的部署和超零界系统的调用组成。</p>
+<p>如果您已经部署了联盟链，想要在链上部署超零界系统，请参见 <a class="reference internal" href="Deploy.html"><span class="doc">Super-Bound部署</span></a> 。</p>
+<p>如果您已经部署了存证系统，想要使用存证溯源的功能并进行二次开发，请参见 <a class="reference internal" href="Api.html"><span class="doc">Super-Bound调用</span></a> 。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">moheng-docs  文档</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>部署前的准备工作 &#8212; moheng-docs  文档</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="联盟链部署" href="Deploy.html" />
+    <link rel="prev" title="墨珩联盟链" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Deploy.html" title="联盟链部署"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="墨珩联盟链"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">墨珩联盟链</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">部署前的准备工作</a><ul>
+<li><a class="reference internal" href="#id2">联盟链安装包构成</a></li>
+<li><a class="reference internal" href="#id3">服务器的建议配置</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>上一个主题</h4>
+  <p class="topless"><a href="index.html"
+                        title="上一章">墨珩联盟链</a></p>
+  <h4>下一个主题</h4>
+  <p class="topless"><a href="Deploy.html"
+                        title="下一章">联盟链部署</a></p>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/supersolid/Supersolid/Beforestart.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>部署前的准备工作<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>联盟链安装包构成<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>联盟链本链的安装包可在如下连接中获取: <a href="https://gitee.com/moheng_blockchain/moheng-platform/releases/v1.0" target="_blank">联盟链安装包</a> 。</p>
+<p>此链接中的节点版本为试用版，部署完成后可使用二十万个块，如果需要后续使用，请参见 <a class="reference internal" href="Afterdeploy.html"><span class="doc">收费模块介绍</span></a> 。</p>
+<p>安装包构成如下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">文件/文件夹</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>super-solid-base</td>
+<td>SSB，联盟链启动节点</td>
+</tr>
+<tr class="row-odd"><td>genesis.json</td>
+<td>联盟链启动节点配置文件（用户无需修改）</td>
+</tr>
+<tr class="row-even"><td>vssbase.js</td>
+<td>联盟链启动节点控制脚本（用户有限修改）请参见 <a class="reference internal" href="Deploy.html"><span class="doc">联盟链部署2.1</span></a></td>
+</tr>
+<tr class="row-odd"><td>super-solid-node</td>
+<td>SSN，联盟链主节点</td>
+</tr>
+<tr class="row-even"><td>userconfig.json</td>
+<td>SSN配置文件</td>
+</tr>
+<tr class="row-odd"><td>sendgas.js</td>
+<td>发送gas的脚本（用户有限修改）请参见 <a class="reference internal" href="Deploy.html"><span class="doc">联盟链部署4.1</span></a></td>
+</tr>
+<tr class="row-even"><td>monitor-scripts\</td>
+<td>监控脚本目录（用户无需修改）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>服务器的建议配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><br/></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">节点名称:</th><td class="field-body">联盟链启动节点(SSB)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">建议数量:</th><td class="field-body">1</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">最低配置:</th><td class="field-body">4核4G计算型实例</td>
+</tr>
+<tr class="field-even field"><th class="field-name">推荐配置:</th><td class="field-body">4核8G计算型实例</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">硬盘:</th><td class="field-body">100G+实际业务需求</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">节点名称:</th><td class="field-body">联盟链主节点(SSN)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">建议数量:</th><td class="field-body">5，7，9，11</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">最低配置:</th><td class="field-body">2核2G计算型实例</td>
+</tr>
+<tr class="field-even field"><th class="field-name">推荐配置:</th><td class="field-body">4核4G计算型实例</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">硬盘:</th><td class="field-body">100G+实际业务需求</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<p>网络带宽方面，服务器相互之间属于同一区域的机房走内网，没有限制，如果相互之间跨区域走外网，推荐至少4M带宽来保障数据正常传输，且实际需求需要根据业务量具体调整。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Deploy.html" title="联盟链部署"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="墨珩联盟链"
+             >上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">moheng-docs  文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >墨珩联盟链平台（超衡）</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >墨珩联盟链</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, 墨珩科技.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 创建。
+    </div>
+  </body>
+</html>
