@@ -16,6 +16,7 @@
    Console
    Rpc
    Sdk
+   SdkJava
    Api
 
 
